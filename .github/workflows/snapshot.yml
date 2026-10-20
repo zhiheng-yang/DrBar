@@ -1,0 +1,42 @@
+name: Refresh the ccfddl snapshot
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: write
+
+jobs:
+  refresh:
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: Download and check
+        run: scripts/update-snapshot.sh
+      - name: Open or update the pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- App/Resources/allconf.yml App/Resources/allacc.yml; then
+            echo "No change."
+            exit 0
+          fi
+          branch="snapshot/ccfddl"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add App/Resources/allconf.yml App/Resources/allacc.yml
+          git commit -m "Refresh the ccfddl snapshot"
+          git push --force origin "$branch"
+          if [ -z "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+            gh pr create --title "Refresh the ccfddl snapshot" \
+              --body "Weekly update of the bundled ccfddl data, used on a first launch without network." \
+              --head "$branch"
+          fi
+          # A pull request opened with this workflow's token does not start CI by itself.
+          gh workflow run ci.yml --ref "$branch"

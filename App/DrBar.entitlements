@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>com.apple.security.app-sandbox</key>
+	<true/>
+	<!-- Downloading ccfddl data. -->
+	<key>com.apple.security.network.client</key>
+	<true/>
+	<!-- Importing and exporting user.json through open and save panels. -->
+	<key>com.apple.security.files.user-selected.read-write</key>
+	<true/>
+	<!-- The timeline image for Mail, which is sandboxed and reads attachments from Downloads. -->
+	<key>com.apple.security.files.downloads.read-write</key>
+	<true/>
+	<!-- Sending progress through Mail, only after the user presses Send. -->
+	<key>com.apple.security.automation.apple-events</key>
+	<true/>
+	<key>com.apple.security.temporary-exception.apple-events</key>
+	<array>
+		<string>com.apple.mail</string>
+	</array>
+</dict>
+</plist>

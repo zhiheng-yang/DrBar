@@ -1,0 +1,1423 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>DrBar — Every deadline, one timeline, in your menu bar</title>
+<meta name="description" content="DrBar puts conference deadlines and your papers' plans on one timeline in the Mac menu bar. Free and open source, for macOS 14 or later.">
+<link rel="icon" href="images/icon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zhiheng-yang.github.io/DrBar/">
+<meta property="og:title" content="DrBar">
+<meta property="og:description" content="Every deadline, one timeline, in your menu bar.">
+<meta property="og:image" content="https://zhiheng-yang.github.io/DrBar/images/popover-light.png">
+<meta name="twitter:card" content="summary_large_image">
+<script>
+  // The language and the appearance are settled before anything is drawn, so that only the
+  // pictures that are shown are ever loaded.
+  (function () {
+    var root = document.documentElement;
+    var lang = null;
+    var theme = null;
+    try {
+      lang = localStorage.getItem("drbar-lang");
+      theme = localStorage.getItem("drbar-theme");
+    } catch (e) {}
+    if (lang !== "en" && lang !== "zh-Hans") {
+      lang = (navigator.language || "en").toLowerCase().indexOf("zh") === 0 ? "zh-Hans" : "en";
+    }
+    root.setAttribute("data-lang", lang);
+    root.setAttribute("lang", lang);
+    if (theme === "light" || theme === "dark") root.setAttribute("data-theme", theme);
+    root.classList.add("js");
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) root.classList.add("motion");
+  })();
+</script>
+<style>
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --bg-alt: #f5f5f7;
+    --card: #ffffff;
+    --text: #1d1d1f;
+    --muted: #6e6e73;
+    --hair: rgba(0, 0, 0, 0.08);
+    --link: #0066cc;
+    --accent: #5e5ce6;
+    --accent-2: #a259ff;
+    --nav: rgba(251, 251, 253, 0.78);
+    --pressed: #1d1d1f;
+    --on-pressed: #ffffff;
+    --shadow: 0 30px 80px -20px rgba(15, 15, 40, 0.28), 0 8px 24px -8px rgba(15, 15, 40, 0.12);
+    --wallpaper:
+      radial-gradient(120% 140% at 10% 0%, #8e8cf6 0%, transparent 55%),
+      radial-gradient(120% 140% at 100% 100%, #f5a1d0 0%, transparent 55%),
+      linear-gradient(135deg, #6f86ff, #b67cff);
+    --window-bar: #ececee;
+    /* The menu bar and the app's colors, as macOS draws them. */
+    --menu: rgba(246, 246, 248, 0.62);
+    --menu-open: rgba(0, 0, 0, 0.09);
+    --menubar: #f0f0f0;
+    --label: rgba(0, 0, 0, 0.85);
+    --item-track: rgba(0, 0, 0, 0.136);
+    --calm: #0088ff;
+    --sys-indigo: #6155f5;
+    --sys-teal: #00c3d0;
+    --sys-gray: #8e8e93;
+    --sys-orange: #ff8d28;
+    --sys-red: #ff383c;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --bg: #000000;
+      --bg-alt: #101012;
+      --card: #1c1c1e;
+      --text: #f5f5f7;
+      --muted: #a1a1a6;
+      --hair: rgba(255, 255, 255, 0.12);
+      --link: #2997ff;
+      --accent: #7d7aff;
+      --accent-2: #c18cff;
+      --nav: rgba(22, 22, 23, 0.72);
+      --pressed: #f5f5f7;
+      --on-pressed: #000000;
+      --shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+      --wallpaper:
+        radial-gradient(120% 140% at 10% 0%, #3b3aa3 0%, transparent 55%),
+        radial-gradient(120% 140% at 100% 100%, #7a2f6b 0%, transparent 55%),
+        linear-gradient(135deg, #1b2457, #3a1d5e);
+      --window-bar: #2c2c2e;
+      --menu: rgba(24, 24, 28, 0.5);
+      --menu-open: rgba(255, 255, 255, 0.17);
+      --menubar: #292929;
+      --label: rgba(255, 255, 255, 0.85);
+      --item-track: rgba(255, 255, 255, 0.136);
+      --calm: #0091ff;
+      --sys-indigo: #6d7cff;
+      --sys-teal: #00d2e0;
+      --sys-gray: #98989d;
+      --sys-orange: #ff9230;
+      --sys-red: #ff4245;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --bg: #000000;
+    --bg-alt: #101012;
+    --card: #1c1c1e;
+    --text: #f5f5f7;
+    --muted: #a1a1a6;
+    --hair: rgba(255, 255, 255, 0.12);
+    --link: #2997ff;
+    --accent: #7d7aff;
+    --accent-2: #c18cff;
+    --nav: rgba(22, 22, 23, 0.72);
+    --pressed: #f5f5f7;
+    --on-pressed: #000000;
+    --shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8), 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+    --wallpaper:
+      radial-gradient(120% 140% at 10% 0%, #3b3aa3 0%, transparent 55%),
+      radial-gradient(120% 140% at 100% 100%, #7a2f6b 0%, transparent 55%),
+      linear-gradient(135deg, #1b2457, #3a1d5e);
+    --window-bar: #2c2c2e;
+    --menu: rgba(24, 24, 28, 0.5);
+    --menu-open: rgba(255, 255, 255, 0.17);
+    --menubar: #292929;
+    --label: rgba(255, 255, 255, 0.85);
+    --item-track: rgba(255, 255, 255, 0.136);
+    --calm: #0091ff;
+    --sys-indigo: #6d7cff;
+    --sys-teal: #00d2e0;
+    --sys-gray: #98989d;
+    --sys-orange: #ff9230;
+    --sys-red: #ff4245;
+  }
+
+  /* Each picture comes in the page's appearance and language; the others are hidden, and as they
+     load lazily, never loaded. */
+  :root[data-theme="light"] .dark-only, :root[data-theme="dark"] .light-only { display: none !important; }
+  @media (prefers-color-scheme: light) { :root:not([data-theme]) .dark-only { display: none !important; } }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme]) .light-only { display: none !important; } }
+  [data-lang="en"] [lang="zh-Hans"], [data-lang="zh-Hans"] [lang="en"] { display: none !important; }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue",
+      "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    font-size: 17px;
+    line-height: 1.47;
+    letter-spacing: -0.022em;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+  a { color: var(--link); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  img, video { max-width: 100%; height: auto; display: block; }
+  :focus-visible { outline: 3px solid var(--link); outline-offset: 3px; border-radius: 6px; }
+  button { font: inherit; }
+  section[id], header[id] { scroll-margin-top: 52px; }
+
+  /* Navigation */
+  nav {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--nav);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid var(--hair);
+  }
+  .nav-inner {
+    max-width: 1024px; margin: 0 auto; height: 52px; padding: 0 22px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .brand { display: flex; align-items: center; gap: 8px; color: var(--text); font-weight: 600; font-size: 19px; }
+  .brand:hover { text-decoration: none; }
+  .brand img { width: 26px; height: 26px; }
+  .nav-links { display: flex; gap: 20px; margin-left: auto; font-size: 13px; }
+  .nav-links a { color: var(--text); opacity: 0.8; }
+  .nav-links a:hover { opacity: 1; text-decoration: none; }
+  .seg { display: inline-flex; border: 1px solid var(--hair); border-radius: 999px; padding: 2px; flex: none; }
+  .seg button {
+    font-size: 12px; color: var(--muted); background: none; border: 0;
+    height: 24px; min-width: 28px; padding: 0 9px; border-radius: 999px; cursor: pointer;
+    display: inline-grid; place-items: center; transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .seg button svg { width: 15px; height: 15px; display: block; }
+  .seg button[aria-pressed="true"] { background: var(--pressed); color: var(--on-pressed); }
+  @media (max-width: 860px) {
+    .nav-links { display: none; }
+    .seg.themes { margin-left: auto; }
+  }
+  @media (max-width: 380px) {
+    .nav-inner { gap: 10px; padding: 0 16px; }
+    .seg button { padding: 0 7px; }
+  }
+
+  /* Layout */
+  section { padding: 120px 22px; position: relative; }
+  .alt { background: var(--bg-alt); }
+  .wrap { max-width: 980px; margin: 0 auto; }
+  .center { text-align: center; }
+  .eyebrow { color: var(--accent); font-weight: 600; font-size: 21px; margin: 0 0 8px; letter-spacing: 0.004em; }
+  h1, h2, h3 { margin: 0; font-weight: 700; letter-spacing: -0.015em; }
+  h2 { font-size: clamp(36px, 6vw, 64px); line-height: 1.07; }
+  h1, h2, h3, .tagline, .lead, .caption { text-wrap: balance; }
+  h3 { font-size: 24px; line-height: 1.2; letter-spacing: 0.009em; }
+  .lead { font-size: clamp(19px, 2.3vw, 24px); line-height: 1.38; color: var(--muted); max-width: 760px; margin: 22px auto 0; }
+
+  /* The menu bar item, drawn as the app draws it. */
+  .label { display: block; height: 22px; width: auto; }
+  .label-text { font: 500 12px -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif; letter-spacing: 0; }
+  .label-text.days { font-variant-numeric: tabular-nums; }
+
+  /* Screenshots and films: a still in every appearance and language, and a film over it. */
+  .shot { margin: 64px auto 0; border-radius: 18px; box-shadow: var(--shadow); overflow: hidden; background: var(--card); position: relative; }
+  .shot > img { width: 100%; }
+  .shot.wide { max-width: 872px; }
+  .shot.crop { aspect-ratio: var(--ratio); }
+  .shot.crop > img { height: 100%; object-fit: cover; object-position: top; }
+  .shot.band { max-width: 760px; aspect-ratio: 1280 / 300; }
+  .shot.band > img { height: 100%; object-fit: cover; object-position: 0 44.7%; }
+  .film-video {
+    position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top;
+    opacity: 0; pointer-events: none;
+  }
+  .film.rolling .film-video { opacity: 1; }
+  /* To play a film again: under its corner, clear of what it shows. */
+  .replay {
+    display: grid; place-items: center; width: 36px; height: 36px; margin: 14px max(0px, calc((100% - 872px) / 2)) 0 auto;
+    border: 0; border-radius: 50%; cursor: pointer; color: var(--text); background: var(--hair);
+    opacity: 0; transform: scale(0.85); visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s linear 0.3s;
+  }
+  .replay svg { width: 16px; height: 16px; }
+  .film.ended + .replay { opacity: 1; transform: none; visibility: visible; transition-delay: 0s; }
+
+  /* Hero: the window under the menu bar, on a desktop, at the size it is on a Mac. */
+  .hero { padding: 96px 22px 56px; text-align: center; overflow: hidden; }
+  .hero .icon { width: 128px; height: 128px; margin: 0 auto 18px; filter: drop-shadow(0 18px 30px rgba(80, 70, 220, 0.35)); }
+  .hero h1 { font-size: clamp(56px, 11vw, 112px); line-height: 1; letter-spacing: -0.035em; }
+  .hero .tagline {
+    font-size: clamp(28px, 4.6vw, 52px); font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; margin: 14px 0 0;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .ctas { display: flex; gap: 16px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 34px; }
+  .button {
+    display: inline-block; background: #0071e3; color: #fff; font-size: 17px;
+    padding: 12px 24px; border-radius: 999px; font-weight: 500;
+  }
+  .button:hover { text-decoration: none; filter: brightness(1.08); }
+  .more { font-size: 17px; }
+  .more::after { content: " ›"; }
+  .desktop {
+    container-type: inline-size; position: relative; max-width: 840px; margin: 72px auto 0;
+    aspect-ratio: 840 / 790; border-radius: 18px; overflow: hidden; background: var(--wallpaper);
+    box-shadow: var(--shadow); --u: calc(100cqw / 840);
+  }
+  .menu {
+    position: absolute; left: 0; right: 0; top: 0; height: calc(var(--u) * 24);
+    display: flex; align-items: center; justify-content: flex-end; gap: calc(var(--u) * 10);
+    padding: 0 calc(var(--u) * 14); background: var(--menu); color: var(--label);
+    backdrop-filter: saturate(160%) blur(18px); -webkit-backdrop-filter: saturate(160%) blur(18px);
+    font-size: calc(var(--u) * 13); font-weight: 500; letter-spacing: 0; white-space: nowrap;
+  }
+  .menu .status { height: calc(var(--u) * 22); padding: 0 calc(var(--u) * 4); border-radius: calc(var(--u) * 7); background: var(--menu-open); }
+  .menu .status .label { height: 100%; }
+  .desktop .popover {
+    position: absolute; top: calc(var(--u) * 30); right: calc(var(--u) * 10); width: calc(var(--u) * 640);
+    margin: 0; border-radius: calc(var(--u) * 14); transition: opacity 0.5s ease;
+  }
+  .motion .desktop .popover.pending { opacity: 0; }
+  .desktop .replay {
+    position: absolute; right: calc(var(--u) * 10); bottom: calc(var(--u) * 18); margin: 0;
+    color: #fff; background: rgba(30, 30, 40, 0.42); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  }
+  @media (max-width: 720px) { .desktop { --u: calc(100cqw / 660); aspect-ratio: 660 / 750; } }
+
+  /* The menu bar, told as you scroll: a sticky stage over a tall track. */
+  .story { padding: 0; }
+  .story-track { height: 380vh; position: relative; }
+  .story-stage {
+    position: sticky; top: 52px; height: calc(100vh - 52px); height: calc(100svh - 52px); min-height: 560px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 22px;
+  }
+  .scene {
+    margin-top: 44px; width: min(820px, 100%); border-radius: 20px; overflow: hidden;
+    background: var(--wallpaper); box-shadow: var(--shadow); padding-bottom: clamp(44px, 8vw, 96px);
+  }
+  .scene .menu { position: relative; height: clamp(54px, 8.4vw, 84px); justify-content: center; padding: 0; }
+  .zoom { height: 91.7%; display: grid; place-items: center; }
+  .zoom .label { grid-area: 1 / 1; height: 100%; }
+  .captions { position: relative; margin-top: 34px; height: 4.2em; width: min(680px, 100%); font-size: clamp(19px, 2.4vw, 26px); font-weight: 600; letter-spacing: -0.01em; }
+  .caption { position: absolute; inset: 0; margin: 0; opacity: 0; transform: translateY(14px); filter: blur(4px); transition: opacity 0.5s ease, transform 0.5s ease, filter 0.5s ease; }
+  .caption.on { opacity: 1; transform: none; filter: none; }
+  .caption small { display: block; color: var(--muted); font-weight: 500; font-size: 0.72em; margin-top: 6px; letter-spacing: -0.005em; }
+  .meter { margin-top: 26px; display: flex; gap: 6px; }
+  .meter i { width: 26px; height: 4px; border-radius: 2px; background: var(--hair); transition: background-color 0.3s ease; }
+  .meter i.on { background: var(--text); }
+  /* Without motion, the story is two moments side by side, and its words a list. */
+  :root:not(.motion) .story-track { height: auto; }
+  :root:not(.motion) .story-stage { position: static; height: auto; min-height: 0; padding: 120px 22px; }
+  :root:not(.motion) .zoom { display: flex; justify-content: center; gap: 6%; }
+  :root:not(.motion) .captions { height: auto; }
+  :root:not(.motion) .caption { position: static; opacity: 1; transform: none; filter: none; margin: 0 0 16px; }
+  :root:not(.motion) .meter { display: none; }
+
+  /* Reading the menu bar */
+  .readings { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }
+  .reading { background: var(--card); border-radius: 22px; padding: 24px 24px 28px; border: 1px solid var(--hair); }
+  .reading p { color: var(--muted); margin: 10px 0 0; }
+  .mini {
+    display: flex; flex-wrap: wrap; align-content: center; align-items: center; justify-content: center; gap: 10px 12px;
+    height: 148px; padding: 16px 12px; margin-bottom: 22px; border-radius: 14px; background: var(--menubar);
+  }
+  .mini .label { height: 28px; }
+  .mini.column { flex-direction: column; flex-wrap: nowrap; }
+  .mini.single .label { height: 44px; }
+  @media (max-width: 860px) { .readings { grid-template-columns: 1fr; } }
+
+  /* Feature grid */
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px 28px; margin-top: 72px; text-align: left; }
+  .grid h3 { font-size: 19px; }
+  .grid p { color: var(--muted); margin: 6px 0 0; }
+  @media (max-width: 820px) { .grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 30px; }
+  .chip { border: 1px solid var(--hair); border-radius: 999px; padding: 6px 14px; font-size: 15px; color: var(--muted); background: var(--card); }
+
+  /* Highlights: a row of cards to swipe through, from edge to edge. */
+  .gallery {
+    display: grid; grid-auto-flow: column; grid-auto-columns: min(84vw, 560px); gap: 22px;
+    overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none;
+    --edge: max(22px, calc((100vw - 980px) / 2));
+    margin: 60px -22px 0; padding: 8px var(--edge) 30px; scroll-padding: 0 var(--edge);
+  }
+  .gallery::-webkit-scrollbar { display: none; }
+  .card { margin: 0; scroll-snap-align: start; background: var(--card); border-radius: 26px; overflow: hidden; text-align: left; display: flex; flex-direction: column; }
+  .card figcaption { padding: 26px 28px 30px; font-size: 19px; line-height: 1.35; color: var(--muted); }
+  .card figcaption b { color: var(--text); font-weight: 600; }
+  .card-shot { aspect-ratio: 1000 / 640; overflow: hidden; border-bottom: 1px solid var(--hair); }
+  .card-shot img { width: 100%; height: 100%; object-fit: cover; object-position: top left; transition: transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .motion .card:hover .card-shot img { transform: scale(1.03); }
+  .gallery-nav { display: flex; justify-content: flex-end; gap: 12px; max-width: 980px; margin: 0 auto; }
+  .gallery-nav button {
+    width: 38px; height: 38px; border-radius: 50%; border: 0; cursor: pointer; display: grid; place-items: center;
+    background: var(--card); color: var(--text); transition: opacity 0.2s ease;
+  }
+  .gallery-nav button:disabled { opacity: 0.35; cursor: default; }
+  .gallery-nav svg { width: 16px; height: 16px; }
+
+  /* Siri, on a dark stage in either appearance */
+  .stage-dark { background: #000; color: #f5f5f7; overflow: hidden; }
+  .stage-dark .lead { color: #a1a1a6; }
+  .stage-dark .eyebrow { color: #c18cff; }
+  .glow {
+    position: absolute; left: 50%; top: 58%; width: min(900px, 140vw); height: 520px; transform: translate(-50%, -50%);
+    background:
+      radial-gradient(closest-side, rgba(255, 95, 160, 0.55), transparent 70%) 18% 40% / 46% 70% no-repeat,
+      radial-gradient(closest-side, rgba(90, 140, 255, 0.6), transparent 70%) 60% 30% / 50% 76% no-repeat,
+      radial-gradient(closest-side, rgba(255, 170, 60, 0.45), transparent 70%) 82% 70% / 40% 60% no-repeat,
+      radial-gradient(closest-side, rgba(170, 90, 255, 0.55), transparent 70%) 40% 75% / 52% 70% no-repeat;
+    filter: blur(40px); opacity: 0.75; pointer-events: none;
+  }
+  .motion .glow { animation: drift 14s ease-in-out infinite alternate; }
+  @keyframes drift {
+    from { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+    to { transform: translate(-50%, -50%) rotate(14deg) scale(1.12); }
+  }
+  .siri { display: grid; gap: 14px; max-width: 640px; margin: 56px auto 0; position: relative; }
+  .bubble {
+    justify-self: start; max-width: 100%; text-align: left;
+    padding: 12px 18px; border-radius: 22px; font-size: 19px; line-height: 1.35;
+    background: rgba(38, 38, 42, 0.82); border: 1px solid rgba(255, 255, 255, 0.1); color: #f5f5f7;
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  }
+  .bubble.you { justify-self: end; color: #fff; border: 0; background: linear-gradient(135deg, #4f8cff, #7a5cff); }
+  .bubble small { display: block; color: #a1a1a6; font-size: 14px; margin-top: 4px; }
+
+  /* A progress email, as Mail shows it: the message in the page's appearance, the image as it is sent. */
+  .mail {
+    max-width: 640px; margin: 64px auto 0; text-align: left; border-radius: 14px; overflow: hidden;
+    background: var(--card); box-shadow: var(--shadow); border: 1px solid var(--hair);
+  }
+  .mail-bar { height: 38px; display: flex; align-items: center; gap: 8px; padding: 0 14px; background: var(--window-bar); border-bottom: 1px solid var(--hair); }
+  .mail-bar i { width: 12px; height: 12px; border-radius: 50%; display: block; }
+  .mail-bar i:nth-child(1) { background: #ff5f57; }
+  .mail-bar i:nth-child(2) { background: #febc2e; }
+  .mail-bar i:nth-child(3) { background: #28c840; }
+  .mail-head { padding: 16px 24px 14px; border-bottom: 1px solid var(--hair); }
+  .mail-subject { font-weight: 600; font-size: 17px; line-height: 1.3; }
+  .mail-meta { color: var(--muted); font-size: 14px; margin-top: 4px; }
+  .mail-body { padding: 18px 24px 26px; font-size: 16px; }
+  .mail-body p { margin: 0 0 16px; }
+  .mail-body img { border-radius: 8px; border: 1px solid var(--hair); width: 100%; max-width: 560px; }
+
+  /* Steps */
+  .steps { counter-reset: step; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 64px; text-align: left; }
+  .step { counter-increment: step; background: var(--card); border-radius: 22px; padding: 28px 28px 30px; border: 1px solid var(--hair); }
+  .step::before {
+    content: counter(step); display: inline-grid; place-items: center; width: 34px; height: 34px;
+    border-radius: 50%; background: var(--accent); color: #fff; font-weight: 700; font-size: 17px; margin-bottom: 14px;
+  }
+  .step p { color: var(--muted); margin: 8px 0 0; }
+  kbd {
+    font: 600 14px/1 -apple-system, BlinkMacSystemFont, sans-serif; padding: 3px 7px; border-radius: 6px;
+    border: 1px solid var(--hair); background: var(--bg-alt); color: var(--text);
+  }
+  @media (max-width: 720px) { .steps { grid-template-columns: 1fr; } }
+
+  .keys { width: 100%; max-width: 720px; margin: 48px auto 0; border-collapse: collapse; text-align: left; font-size: 16px; }
+  .keys td { padding: 11px 6px; border-top: 1px solid var(--hair); }
+  .keys td:first-child { white-space: nowrap; width: 36%; }
+  .keys td:last-child { color: var(--muted); }
+
+  /* Privacy */
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; text-align: left; }
+  .tile { border-radius: 22px; padding: 30px; background: var(--card); }
+  .tile .big { font-size: 40px; font-weight: 700; letter-spacing: -0.02em; }
+  .tile p { color: var(--muted); margin: 8px 0 0; }
+  @media (max-width: 820px) { .tiles { grid-template-columns: 1fr; } }
+
+  /* Download */
+  .download { text-align: center; padding: 130px 22px 140px; }
+  .download .icon { width: 96px; height: 96px; margin: 0 auto 20px; }
+  .fine { color: var(--muted); font-size: 14px; margin-top: 18px; }
+
+  footer { border-top: 1px solid var(--hair); padding: 26px 22px 40px; color: var(--muted); font-size: 12px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+
+  /* Coming into view: words rise out of a blur, pictures settle in, one after the other, and the
+     highlights slide in from the side. */
+  .motion .reveal {
+    opacity: 0; transform: translateY(30px); filter: blur(6px);
+    transition: opacity 0.9s ease, transform 1s cubic-bezier(0.2, 0.7, 0.2, 1), filter 0.9s ease;
+    transition-delay: var(--delay, 0s);
+  }
+  .motion .reveal.media { transform: translateY(60px) scale(0.94); filter: none; }
+  .motion .reveal.slide { transform: translateX(120px); filter: none; }
+  .motion .reveal.in { opacity: 1; transform: none; filter: none; }
+</style>
+</head>
+<body>
+
+<nav aria-label="DrBar">
+  <div class="nav-inner">
+    <a class="brand" href="#top"><img src="images/icon.png" alt="" width="256" height="256"> DrBar</a>
+    <div class="nav-links">
+      <a href="#menubar"><span lang="en">Menu bar</span><span lang="zh-Hans">菜单栏</span></a>
+      <a href="#plans"><span lang="en">Plans</span><span lang="zh-Hans">计划</span></a>
+      <a href="#conferences"><span lang="en">Conferences</span><span lang="zh-Hans">会议</span></a>
+      <a href="#siri">Siri</a>
+      <a href="#how"><span lang="en">How to use</span><span lang="zh-Hans">使用方法</span></a>
+      <a href="#download"><span lang="en">Download</span><span lang="zh-Hans">下载</span></a>
+    </div>
+    <div class="seg themes" role="group" data-label-en="Appearance" data-label-zh-Hans="外观">
+      <button type="button" data-set-theme="auto" aria-pressed="true" data-label-en="Automatic, as your device is set" data-label-zh-Hans="自动，跟随设备">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 0 0 12.5z" fill="currentColor"/></svg>
+      </button>
+      <button type="button" data-set-theme="light" aria-pressed="false" data-label-en="Light" data-label-zh-Hans="浅色">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3" fill="currentColor"/><g stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1.25v1.5M8 13.25v1.5M1.25 8h1.5M13.25 8h1.5M3.2 3.2l1.06 1.06M11.74 11.74l1.06 1.06M3.2 12.8l1.06-1.06M11.74 4.26l1.06-1.06"/></g></svg>
+      </button>
+      <button type="button" data-set-theme="dark" aria-pressed="false" data-label-en="Dark" data-label-zh-Hans="深色">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.6 10.1A6 6 0 0 1 5.9 2.4a6 6 0 1 0 7.7 7.7z" fill="currentColor"/></svg>
+      </button>
+    </div>
+    <div class="seg" role="group" data-label-en="Language" data-label-zh-Hans="语言">
+      <button type="button" data-set-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-set-lang="zh-Hans" aria-pressed="false">中文</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <img class="icon reveal" src="images/icon.png" alt="The DrBar icon" width="256" height="256">
+  <h1 class="reveal" style="--delay: .05s">DrBar</h1>
+  <p class="tagline reveal" style="--delay: .12s" lang="en">Every deadline. One timeline.<br>Right in your menu bar.</p>
+  <p class="tagline reveal" style="--delay: .12s" lang="zh-Hans">每个 DDL，一条时间轴，<br>就在菜单栏里。</p>
+  <p class="lead reveal" style="--delay: .2s" lang="en">Conference deadlines from ccfddl and the plans of your papers, side by side as bars of
+    time, so how long is left is simply how long the bar is.</p>
+  <p class="lead reveal" style="--delay: .2s" lang="zh-Hans">ccfddl 的会议 DDL 和你每篇论文的计划，并排画成一条条时间，离 DDL 还有多久，就是横条有多长。</p>
+  <div class="ctas reveal" style="--delay: .28s">
+    <a class="button" href="https://github.com/zhiheng-yang/DrBar/releases"><span lang="en">Download for Mac</span><span lang="zh-Hans">下载 Mac 版</span></a>
+    <a class="more" href="#how"><span lang="en">See how to use it</span><span lang="zh-Hans">看看怎么用</span></a>
+  </div>
+
+  <div class="desktop reveal media" style="--delay: .3s">
+    <div class="menu">
+      <span class="status">
+        <svg class="label" data-label="hero" role="img" data-label-en="DrBar in the menu bar: Efficient Video Diffusion, 26 days to its abstract deadline, with its plan round the frame" data-label-zh-Hans="菜单栏里的 DrBar：Efficient Video Diffusion，离摘要截止还有 26 天，它的计划绕着边框"></svg>
+      </span>
+      <span lang="en" aria-hidden="true">Fri Oct 16&nbsp;&nbsp;9:41 AM</span>
+      <span lang="zh-Hans" aria-hidden="true">10月16日 周五 上午9:41</span>
+    </div>
+    <div class="shot popover film pending" data-film="popover-grow">
+      <img class="light-only" lang="en" loading="lazy" src="images/popover-light.png" alt="The DrBar window under the menu bar: papers and groups as plans, deadlines of work without a plan as flags, and the followed conferences as thin bars, all on one time axis" width="1280" height="1374">
+      <img class="dark-only" lang="en" loading="lazy" src="images/popover-dark.png" alt="The DrBar window under the menu bar, in dark mode" width="1280" height="1374">
+      <img class="light-only" lang="zh-Hans" loading="lazy" src="images/popover-light-zh.png" alt="菜单栏下的 DrBar 窗口：论文和分组的计划、没有计划的事项的小旗，以及关注的会议细条，共用一条时间轴" width="1280" height="1374">
+      <img class="dark-only" lang="zh-Hans" loading="lazy" src="images/popover-dark-zh.png" alt="深色模式下菜单栏下的 DrBar 窗口" width="1280" height="1374">
+    </div>
+  </div>
+</header>
+
+<section id="menubar" class="story alt">
+  <div class="story-track">
+    <div class="story-stage">
+      <p class="eyebrow" lang="en">Menu bar</p>
+      <p class="eyebrow" lang="zh-Hans">菜单栏</p>
+      <h2 lang="en">Read it like a clock.</h2>
+      <h2 lang="zh-Hans">像看钟一样看它。</h2>
+      <div class="scene" aria-hidden="true">
+        <div class="menu"><div class="zoom"><svg class="label" data-label="countdown"></svg><svg class="label" data-label="plan"></svg></div></div>
+      </div>
+      <div class="captions">
+        <p class="caption on"><span lang="en">When the work starts, the whole outline.</span><span lang="zh-Hans">开始做的那天，整圈都有颜色。</span>
+          <small lang="en">One round is its time, from its first day to the deadline at the top.</small><small lang="zh-Hans">一圈就是它的时间，从第一天走到顶上的 DDL。</small></p>
+        <p class="caption"><span lang="en">The colored stretch is the time left.</span><span lang="zh-Hans">有颜色的那一段，就是剩下的时间。</span>
+          <small lang="en">It shrinks toward the top as the day comes, like a timer.</small><small lang="zh-Hans">DDL 越近，它越往顶上缩，像计时器一样。</small></p>
+        <p class="caption"><span lang="en">Within a week, it turns orange.</span><span lang="zh-Hans">一周之内，变成橙色。</span>
+          <small lang="en">So do the days beside the name.</small><small lang="zh-Hans">名字旁边的天数也一起变色。</small></p>
+        <p class="caption"><span lang="en">Three days left: red, and a !</span><span lang="zh-Hans">只剩三天：变红，学位帽换成 !</span>
+          <small lang="en">It reads without color too.</small><small lang="zh-Hans">不看颜色也认得出来。</small></p>
+        <p class="caption"><span lang="en">Pick a paper, and its plan goes round.</span><span lang="zh-Hans">指定一篇论文，绕着走的就是它的计划。</span>
+          <small lang="en">A stretch per block, in the block's own color.</small><small lang="zh-Hans">每个时间块一段，用它自己的颜色。</small></p>
+        <p class="caption"><span lang="en">Solid is done. The dot is today.</span><span lang="zh-Hans">实心是做完的，圆点是今天。</span>
+          <small lang="en">The red mark is the deadline; the dot turns orange if work falls behind.</small><small lang="zh-Hans">红色刻度是 DDL；工作落后时，圆点变橙。</small></p>
+      </div>
+      <div class="meter" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+    </div>
+  </div>
+</section>
+
+<section id="readings">
+  <div class="wrap">
+    <div class="readings">
+      <div class="reading reveal">
+        <div class="mini column" aria-hidden="true"><svg class="label" data-label="soon"></svg><svg class="label" data-label="near"></svg><svg class="label" data-label="critical"></svg></div>
+        <h3 lang="en">Color is how close</h3>
+        <h3 lang="zh-Hans">颜色表示远近</h3>
+        <p lang="en">Calm while there is time, orange within a week, red within three days, when a red ! takes the place of the cap.</p>
+        <p lang="zh-Hans">时间还多时是平静的颜色，一周内变橙，三天内变红，这时学位帽换成红色的 !。</p>
+      </div>
+      <div class="reading reveal" style="--delay: .08s">
+        <div class="mini single" aria-hidden="true"><svg class="label" data-label="paper"></svg></div>
+        <h3 lang="en">A plan goes round</h3>
+        <h3 lang="zh-Hans">计划绕着走</h3>
+        <p lang="en">Pick a paper and its blocks go round the frame in their colors: solid when done, faint still to do, a dot at today.</p>
+        <p lang="zh-Hans">指定一篇论文，它的时间块就用各自的颜色绕着边框：做完的是实心，没做的是浅色，今天是一个小圆点。</p>
+      </div>
+      <div class="reading reveal" style="--delay: .16s">
+        <div class="mini" aria-hidden="true"><svg class="label" data-label="name"></svg><svg class="label" data-label="days"></svg><svg class="label" data-label="two"></svg><svg class="label" data-label="symbol"></svg></div>
+        <h3 lang="en">Four ways to show it</h3>
+        <h3 lang="zh-Hans">四种样子</h3>
+        <p lang="en">With the name, with the days too, the next two deadlines in two frames, or the symbol alone for a crowded menu bar.</p>
+        <p lang="zh-Hans">只显示名字、加上天数、用两个边框显示接下来两个 DDL，或者菜单栏太挤时只显示图标。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="overview" class="alt">
+  <div class="wrap center">
+    <p class="eyebrow reveal" lang="en">Overview</p>
+    <p class="eyebrow reveal" lang="zh-Hans">总览</p>
+    <h2 class="reveal" lang="en">Your whole term,<br>on one axis.</h2>
+    <h2 class="reveal" lang="zh-Hans">整个学期，<br>一条时间轴。</h2>
+    <p class="lead reveal" style="--delay: .08s" lang="en">Papers on top, then your own groups, then the conferences you follow. Pinch to zoom from a few
+      days to two years: close in, every day has its column and the weekends are shaded, so the days
+      left can be counted on the bars.</p>
+    <p class="lead reveal" style="--delay: .08s" lang="zh-Hans">上面是论文，然后是你自己建的分组，最后是你关注的会议。双指捏合，在几天到两年之间缩放：放大后每天各占一格、周末有底色，还剩几天在横条上就能数出来。</p>
+    <div class="shot wide crop film reveal media" data-film="overview-zoom" data-mode="loop" style="--ratio: 1744 / 1276; --delay: .12s">
+      <img class="light-only" lang="en" loading="lazy" src="images/planner.png" alt="The planner's overview: all papers and groups on one timeline, with the conferences below" width="1744" height="1275">
+      <img class="dark-only" lang="en" loading="lazy" src="images/planner-dark.png" alt="The planner's overview in dark mode" width="1744" height="1275">
+      <img class="light-only" lang="zh-Hans" loading="lazy" src="images/planner-zh.png" alt="规划器的总览：所有论文和分组在同一条时间轴上，下面是会议" width="1744" height="1275">
+      <img class="dark-only" lang="zh-Hans" loading="lazy" src="images/planner-dark-zh.png" alt="深色模式下规划器的总览" width="1744" height="1275">
+    </div>
+  </div>
+</section>
+
+<section id="plans">
+  <div class="wrap center">
+    <p class="eyebrow reveal" lang="en">Plans</p>
+    <p class="eyebrow reveal" lang="zh-Hans">计划</p>
+    <h2 class="reveal" lang="en">A paper is a few<br>stretches of time.</h2>
+    <h2 class="reveal" lang="zh-Hans">一篇论文，<br>就是几段时间。</h2>
+    <p class="lead reveal" style="--delay: .08s" lang="en">Experiments, writing, internal review, buffer: each kind of work has its row, in as many rounds
+      as it takes. Plan backwards from the deadline in one click, then draw and drag blocks as in
+      Calendar.</p>
+    <p class="lead reveal" style="--delay: .08s" lang="zh-Hans">实验、写作、内审修改、缓冲，每类工作一行，可以分好几轮。一键从 DDL 倒推出计划，再像"日历"一样画出、拖动时间块。</p>
+    <div class="shot wide crop film reveal media" data-film="paper-grow" style="--ratio: 1744 / 1630; --delay: .12s">
+      <img class="light-only" lang="en" loading="lazy" src="images/paper.png" alt="A paper's page with its rows of work, milestones and deadlines, and the lists of blocks and milestones" width="1744" height="1630">
+      <img class="dark-only" lang="en" loading="lazy" src="images/paper-dark.png" alt="A paper's page in dark mode" width="1744" height="1630">
+      <img class="light-only" lang="zh-Hans" loading="lazy" src="images/paper-zh.png" alt="一篇论文的页面：每类工作一行，还有里程碑和 DDL，下面是时间块和里程碑列表" width="1744" height="1630">
+      <img class="dark-only" lang="zh-Hans" loading="lazy" src="images/paper-dark-zh.png" alt="深色模式下一篇论文的页面" width="1744" height="1630">
+    </div>
+    <div class="grid">
+      <div class="reveal"><h3 lang="en">Draw like Calendar</h3><h3 lang="zh-Hans">像日历一样画</h3>
+        <p lang="en">Drag across empty days to draw a block, drag its ends or its middle, hold ⌥ to copy.</p>
+        <p lang="zh-Hans">在空白日子上拖出时间块，拖两端改长短、拖中间挪位置，按住 ⌥ 复制。</p></div>
+      <div class="reveal" style="--delay: .06s"><h3 lang="en">Plan backwards</h3><h3 lang="zh-Hans">从 DDL 倒推</h3>
+        <p lang="en">Buffer, internal review, writing and experiments, counted back from the paper deadline.</p>
+        <p lang="zh-Hans">从论文 DDL 往前排好缓冲、内审、写作和实验。</p></div>
+      <div class="reveal" style="--delay: .12s"><h3 lang="en">Milestones</h3><h3 lang="zh-Hans">里程碑</h3>
+        <p lang="en">Internal deadlines and drafts for your supervisor, as diamonds on the plan.</p>
+        <p lang="zh-Hans">内部 DDL、给导师的初稿，都是计划上的菱形。</p></div>
+      <div class="reveal"><h3 lang="en">Every deadline</h3><h3 lang="zh-Hans">每一个 DDL</h3>
+        <p lang="en">Abstract, paper, rebuttal and notification, plus your own: supplementary, camera-ready.</p>
+        <p lang="zh-Hans">摘要、论文、rebuttal、录用通知，还有你自己的：补充材料、camera-ready。</p></div>
+      <div class="reveal" style="--delay: .06s"><h3 lang="en">People on blocks</h3><h3 lang="zh-Hans">谁在做哪一段</h3>
+        <p lang="en">Put your supervisor on the internal review and a co-author on a round of experiments.</p>
+        <p lang="zh-Hans">内审标上导师，某一轮实验标上合作者。</p></div>
+      <div class="reveal" style="--delay: .12s"><h3 lang="en">Nothing lost</h3><h3 lang="zh-Hans">删不丢</h3>
+        <p lang="en">⌘Z undoes; whatever you delete waits thirty days in Recently Deleted.</p>
+        <p lang="zh-Hans">⌘Z 可以撤销；删掉的东西在"最近删除"里保留 30 天。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="highlights" class="alt">
+  <div class="wrap center">
+    <p class="eyebrow reveal" lang="en">Details</p>
+    <p class="eyebrow reveal" lang="zh-Hans">细节</p>
+    <h2 class="reveal" lang="en">More, at a glance.</h2>
+    <h2 class="reveal" lang="zh-Hans">一眼看到更多。</h2>
+  </div>
+  <div class="gallery reveal slide" tabindex="0" role="group" data-label-en="Highlights" data-label-zh-Hans="亮点" style="--delay: .1s">
+    <figure class="card">
+      <div class="card-shot">
+        <img class="light-only" lang="en" loading="lazy" src="images/gallery-hover-light.png" alt="A card over a paper's name: its people, its next deadlines with the time left, and its open to-dos" width="1000" height="640">
+        <img class="dark-only" lang="en" loading="lazy" src="images/gallery-hover-dark.png" alt="The same card in dark mode" width="1000" height="640">
+        <img class="light-only" lang="zh-Hans" loading="lazy" src="images/gallery-hover-light-zh.png" alt="论文名字上的卡片：参与的人、接下来的 DDL 和剩余时间、还没做的待办" width="1000" height="640">
+        <img class="dark-only" lang="zh-Hans" loading="lazy" src="images/gallery-hover-dark-zh.png" alt="深色模式下的同一张卡片" width="1000" height="640">
+      </div>
+      <figcaption lang="en"><b>More where the bar can't say it.</b> Rest the pointer on a name for its deadlines, its people and what is left to do.</figcaption>
+      <figcaption lang="zh-Hans"><b>横条说不清的，停一下就知道。</b> 把指针停在名字上，就能看到 DDL、参与的人和还剩的待办。</figcaption>
+    </figure>
+    <figure class="card">
+      <div class="card-shot">
+        <img class="light-only" lang="en" loading="lazy" src="images/gallery-labels-light.png" alt="The axis labelled with the dates and, under each, the days from today" width="1000" height="641">
+        <img class="dark-only" lang="en" loading="lazy" src="images/gallery-labels-dark.png" alt="The same axis in dark mode" width="1000" height="641">
+        <img class="light-only" lang="zh-Hans" loading="lazy" src="images/gallery-labels-light-zh.png" alt="时间轴上同时标着日期和距今天数" width="1000" height="641">
+        <img class="dark-only" lang="zh-Hans" loading="lazy" src="images/gallery-labels-dark-zh.png" alt="深色模式下的同一条时间轴" width="1000" height="641">
+      </div>
+      <figcaption lang="en"><b>Dates, days from today, or both.</b> How far away something is reads at a glance.</figcaption>
+      <figcaption lang="zh-Hans"><b>日期、距今天数，或者两个都标。</b> 离 DDL 还有多远，一眼就能读出来。</figcaption>
+    </figure>
+    <figure class="card">
+      <div class="card-shot">
+        <img class="light-only" lang="en" loading="lazy" src="images/gallery-compact-light.png" alt="The menu bar window with small rows, a thin bar beside each name" width="1000" height="641">
+        <img class="dark-only" lang="en" loading="lazy" src="images/gallery-compact-dark.png" alt="Small rows in dark mode" width="1000" height="641">
+        <img class="light-only" lang="zh-Hans" loading="lazy" src="images/gallery-compact-light-zh.png" alt="小行高的菜单栏窗口，每个名字旁一条细横条" width="1000" height="641">
+        <img class="dark-only" lang="zh-Hans" loading="lazy" src="images/gallery-compact-dark-zh.png" alt="深色模式下的小行高" width="1000" height="641">
+      </div>
+      <figcaption lang="en"><b>Three row sizes.</b> Down to a thin bar beside each name, so that everything fits.</figcaption>
+      <figcaption lang="zh-Hans"><b>三档行高。</b> 最小时每个名字旁只剩一条细横条，东西再多也能一屏看完。</figcaption>
+    </figure>
+    <figure class="card">
+      <div class="card-shot">
+        <img class="light-only" lang="en" loading="lazy" src="images/gallery-details-light.png" alt="A conference's details: every date of its round in both time zones and the acceptance rate of recent years" width="1000" height="641">
+        <img class="dark-only" lang="en" loading="lazy" src="images/gallery-details-dark.png" alt="A conference's details in dark mode" width="1000" height="641">
+        <img class="light-only" lang="zh-Hans" loading="lazy" src="images/gallery-details-light-zh.png" alt="会议详情：这一轮的每个日期（两个时区）和近几年的录用率" width="1000" height="641">
+        <img class="dark-only" lang="zh-Hans" loading="lazy" src="images/gallery-details-dark-zh.png" alt="深色模式下的会议详情" width="1000" height="641">
+      </div>
+      <figcaption lang="en"><b>The whole cycle of a conference.</b> Every date in your time and the conference's, and recent acceptance rates.</figcaption>
+      <figcaption lang="zh-Hans"><b>一个会议的完整周期。</b> 每个日期都有你的时间和会议的时间，还有近几年的录用率。</figcaption>
+    </figure>
+  </div>
+  <div class="gallery-nav">
+    <button type="button" data-gallery="-1" data-label-en="Previous" data-label-zh-Hans="上一张"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <button type="button" data-gallery="1" data-label-en="Next" data-label-zh-Hans="下一张"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m6 3 5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</section>
+
+<section id="conferences">
+  <div class="wrap center">
+    <p class="eyebrow reveal" lang="en">Conferences</p>
+    <p class="eyebrow reveal" lang="zh-Hans">会议</p>
+    <h2 class="reveal" lang="en">Every conference,<br>as ccfddl lists it.</h2>
+    <h2 class="reveal" lang="zh-Hans">所有会议，<br>和 ccfddl 一样全。</h2>
+    <p class="lead reveal" style="--delay: .08s" lang="en">No typing in dates. Search, filter by field and rank, and star the ones you submit to; next
+      year's edition is followed by itself.</p>
+    <p class="lead reveal" style="--delay: .08s" lang="zh-Hans">不用手动录入日期。搜索、按领域和等级筛选，给要投的会议标星；明年的新一届会自动关注。</p>
+    <div class="chips reveal" style="--delay: .12s">
+      <span class="chip">CCF A · B · C</span><span class="chip">CORE A* – C</span><span class="chip">TH-CPL</span>
+      <span class="chip" lang="en">Acceptance rates</span><span class="chip" lang="zh-Hans">录用率</span>
+      <span class="chip">AoE · UTC−12</span>
+      <span class="chip" lang="en">Rebuttal and notification</span><span class="chip" lang="zh-Hans">Rebuttal 和录用通知</span>
+    </div>
+    <div class="shot wide reveal media" style="--delay: .16s">
+      <img class="light-only" lang="en" loading="lazy" src="images/conferences.png" alt="The Conferences page: every conference with its ranks, field, acceptance rate, place and deadlines" width="1744" height="1100">
+      <img class="dark-only" lang="en" loading="lazy" src="images/conferences-dark.png" alt="The Conferences page in dark mode" width="1744" height="1100">
+      <img class="light-only" lang="zh-Hans" loading="lazy" src="images/conferences-zh.png" alt="会议页面：每个会议的等级、领域、录用率、地点和 DDL" width="1744" height="1100">
+      <img class="dark-only" lang="zh-Hans" loading="lazy" src="images/conferences-dark-zh.png" alt="深色模式下的会议页面" width="1744" height="1100">
+    </div>
+  </div>
+</section>
+
+<section id="groups" class="alt">
+  <div class="wrap center">
+    <p class="eyebrow reveal" lang="en">Groups</p>
+    <p class="eyebrow reveal" lang="zh-Hans">分组</p>
+    <h2 class="reveal" lang="en">And the rest of<br>your work too.</h2>
+    <h2 class="reveal" lang="zh-Hans">其他工作，<br>也放得下。</h2>
+    <p class="lead reveal" style="--delay: .08s" lang="en">Applications, reviews, teaching: make groups of your own and plan their items like papers. Work
+      that is only a deadline takes no row at all, just a flag on its group's line.</p>
+    <p class="lead reveal" style="--delay: .08s" lang="zh-Hans">申请、审稿、助教：自己建分组，里面的事项像论文一样排计划。只有一个 DDL 的工作不占一行，只是分组那一行上的一面小旗。</p>
+    <div class="shot band reveal media" style="--delay: .12s">
+      <img class="light-only" lang="en" loading="lazy" src="images/popover-light.png" alt="Two groups: Applications, with a fellowship planned on its own row and a program's deadline as a flag on the group's line, and Reviews, whose deadlines are flags only" width="1280" height="1374">
+      <img class="dark-only" lang="en" loading="lazy" src="images/popover-dark.png" alt="The same two groups in dark mode" width="1280" height="1374">
+      <img class="light-only" lang="zh-Hans" loading="lazy" src="images/popover-light-zh.png" alt="两个分组：Applications 里的一项奖学金排了计划、单独占一行，另一个项目的 DDL 是分组行上的小旗；Reviews 只有小旗" width="1280" height="1374">
+      <img class="dark-only" lang="zh-Hans" loading="lazy" src="images/popover-dark-zh.png" alt="深色模式下的同两个分组" width="1280" height="1374">
+    </div>
+  </div>
+</section>
+
+<section id="siri" class="stage-dark">
+  <div class="glow" aria-hidden="true"></div>
+  <div class="wrap center" style="position: relative">
+    <p class="eyebrow reveal">Siri</p>
+    <h2 class="reveal" lang="en">Just ask.</h2>
+    <h2 class="reveal" lang="zh-Hans">问一句就行。</h2>
+    <p class="lead reveal" style="--delay: .08s" lang="en">Add work, move a block or hear what's next, by voice, in Spotlight or in the Shortcuts app, in
+      English or Chinese.</p>
+    <p class="lead reveal" style="--delay: .08s" lang="zh-Hans">添加工作、挪动时间块、问问接下来要交什么，用语音、聚焦搜索或"快捷指令"都行，中英文都可以。</p>
+    <div class="siri">
+      <div class="bubble you reveal" lang="en">What's next in DrBar?</div>
+      <div class="bubble you reveal" lang="zh-Hans">DrBar里接下来是什么？</div>
+      <div class="bubble reveal" style="--delay: .3s" lang="en">TMLR review, Report: Mon, Oct 26 at 23:59, 11 days left.</div>
+      <div class="bubble reveal" style="--delay: .3s" lang="zh-Hans">TMLR review，Report：10月26日 周一 23:59，还剩 11天。</div>
+      <div class="bubble you reveal" style="--delay: .6s" lang="en">Postpone a block of Efficient Video Diffusion in DrBar</div>
+      <div class="bubble you reveal" style="--delay: .6s" lang="zh-Hans">在DrBar里推迟Efficient Video Diffusion的时间块</div>
+      <div class="bubble reveal" style="--delay: .9s" lang="en">Which block? <small>Writing · Oct 14 – Oct 29</small><small>Internal review · Oct 30 – Nov 6</small></div>
+      <div class="bubble reveal" style="--delay: .9s" lang="zh-Hans">哪个时间块？<small>写作 · 10月14日 – 10月29日</small><small>内审修改 · 10月30日 – 11月6日</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="email" class="alt">
+  <div class="wrap center">
+    <p class="eyebrow reveal" lang="en">Progress emails</p>
+    <p class="eyebrow reveal" lang="zh-Hans">进度邮件</p>
+    <h2 class="reveal" lang="en">Keep your supervisor<br>in the loop.</h2>
+    <h2 class="reveal" lang="zh-Hans">让导师<br>随时知道进展。</h2>
+    <p class="lead reveal" style="--delay: .08s" lang="en">Send Progress writes the paper's timeline into an email from your own Mail account, as a reply in
+      the same thread, with what matters in the first line. Nobody needs to install anything.</p>
+    <p class="lead reveal" style="--delay: .08s" lang="zh-Hans">"发送进展"会用你自己的"邮件"账户，把论文的时间轴写进一封邮件，作为同一个对话里的回复，第一行就写明最要紧的事。对方什么都不用装。</p>
+    <div class="mail reveal media" style="--delay: .12s">
+      <div class="mail-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+      <div class="mail-head">
+        <div class="mail-subject" lang="en">Re: Progress: Efficient Video Diffusion (Writing · 26 days to the CVPR 2027 abstract deadline)</div>
+        <div class="mail-subject" lang="zh-Hans">Re: 论文进展：Efficient Video Diffusion（写作 · 距 CVPR 2027 摘要截止还有 26 天）</div>
+        <div class="mail-meta" lang="en">To: Prof. Jane Doe</div>
+        <div class="mail-meta" lang="zh-Hans">收件人：Prof. Jane Doe</div>
+      </div>
+      <div class="mail-body">
+        <p lang="en">On track: Writing until 29 Oct. Since 12 Oct: Experiments done.</p>
+        <p lang="zh-Hans">进度正常：写作进行到 10月29日。自 10月12日 以来：实验已完成。</p>
+        <img lang="en" loading="lazy" src="images/email.png" alt="The timeline image attached to a progress email: the days left, the stage and the plan" width="1120" height="874">
+        <img lang="zh-Hans" loading="lazy" src="images/email-zh.png" alt="进度邮件附带的时间轴图片：剩余天数、当前阶段和计划" width="1120" height="860">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap center">
+    <p class="eyebrow reveal" lang="en">How to use</p>
+    <p class="eyebrow reveal" lang="zh-Hans">使用方法</p>
+    <h2 class="reveal" lang="en">Up and running<br>in five minutes.</h2>
+    <h2 class="reveal" lang="zh-Hans">五分钟，<br>就能用起来。</h2>
+    <div class="steps">
+      <div class="step reveal">
+        <h3 lang="en">Install</h3><h3 lang="zh-Hans">安装</h3>
+        <p lang="en">Download the zip, move DrBar to Applications and open it; the first time, click Open Anyway in System Settings › Privacy &amp; Security. A graduation cap in a rounded frame appears in the menu bar.</p>
+        <p lang="zh-Hans">下载 zip，把 DrBar 拖进"应用程序"并打开；第一次打开时，在 系统设置 › 隐私与安全性 里点"仍要打开"。菜单栏里会出现一个圆角边框，里面是学位帽。</p>
+      </div>
+      <div class="step reveal" style="--delay: .06s">
+        <h3 lang="en">Star your conferences</h3><h3 lang="zh-Hans">给会议标星</h3>
+        <p lang="en">Click the frame, then Browse Conferences… (<kbd>⌘F</kbd>). Search, filter by rank, and star the ones you submit to.</p>
+        <p lang="zh-Hans">点一下边框，再点"浏览会议…"（<kbd>⌘F</kbd>）。搜索、按等级筛选，给要投的会议标星。</p>
+      </div>
+      <div class="step reveal">
+        <h3 lang="en">Add a paper</h3><h3 lang="zh-Hans">添加论文</h3>
+        <p lang="en">New Paper (<kbd>⌘N</kbd>), type its title, and Choose Conference… under it. Every date of the round becomes its deadline.</p>
+        <p lang="zh-Hans">新建论文（<kbd>⌘N</kbd>），输入标题，在下面"选择会议…"。这一轮的每个日期都成了它的 DDL。</p>
+      </div>
+      <div class="step reveal" style="--delay: .06s">
+        <h3 lang="en">Plan it</h3><h3 lang="zh-Hans">排计划</h3>
+        <p lang="en">Click Plan Backwards from Deadline, then drag blocks to fit your term. Click a block and press Delete to remove it.</p>
+        <p lang="zh-Hans">点"从 DDL 倒推生成"，再拖动时间块排进你的日程。点选一个时间块按 Delete 就能删掉。</p>
+      </div>
+      <div class="step reveal">
+        <h3 lang="en">Glance at the menu bar</h3><h3 lang="zh-Hans">瞄一眼菜单栏</h3>
+        <p lang="en">The colored stretch of the frame is the time left. Right-click a paper and Show in Menu Bar to watch its plan go round.</p>
+        <p lang="zh-Hans">边框上有颜色的那一段就是剩下的时间。右键一篇论文选"在菜单栏显示"，就能看它的计划绕着走。</p>
+      </div>
+      <div class="step reveal" style="--delay: .06s">
+        <h3 lang="en">Tick off and share</h3><h3 lang="zh-Hans">完成一段，发给导师</h3>
+        <p lang="en">Tick blocks off as you go, ask Siri what's next, and Send Progress to your supervisor when it's time.</p>
+        <p lang="zh-Hans">做完一段勾一段，问 Siri 接下来是什么，需要时给导师"发送进展"。</p>
+      </div>
+    </div>
+    <table class="keys reveal">
+      <tr><td><kbd>⌘N</kbd> <kbd>⇧⌘N</kbd></td><td><span lang="en">New paper, new group</span><span lang="zh-Hans">新建论文、新建分组</span></td></tr>
+      <tr><td><kbd>⌘←</kbd> <kbd>⌘→</kbd> <kbd>⌘T</kbd></td><td><span lang="en">Earlier, later, back to today</span><span lang="zh-Hans">往前、往后、回到今天</span></td></tr>
+      <tr><td><kbd>⌘+</kbd> <kbd>⌘−</kbd> <kbd>⌘0</kbd></td><td><span lang="en">Zoom in, out, back to the chosen range</span><span lang="zh-Hans">放大、缩小、回到选定范围</span></td></tr>
+      <tr><td><kbd>Delete</kbd> <kbd>← →</kbd> <kbd>⏎</kbd></td><td><span lang="en">Delete, move or edit the selected block</span><span lang="zh-Hans">删除、挪动或编辑选中的时间块</span></td></tr>
+      <tr><td><kbd>⌘D</kbd> <kbd>⌘Z</kbd></td><td><span lang="en">Copy the selected block, undo</span><span lang="zh-Hans">复制选中的时间块、撤销</span></td></tr>
+    </table>
+    <p class="lead" style="margin-top: 40px">
+      <a class="more" lang="en" href="https://github.com/zhiheng-yang/DrBar/blob/main/docs/GUIDE.md">Read the full guide</a>
+      <a class="more" lang="zh-Hans" href="https://github.com/zhiheng-yang/DrBar/blob/main/docs/GUIDE.zh-CN.md">阅读完整使用指南</a>
+    </p>
+  </div>
+</section>
+
+<section id="privacy" class="alt">
+  <div class="wrap center">
+    <p class="eyebrow reveal" lang="en">Privacy</p>
+    <p class="eyebrow reveal" lang="zh-Hans">隐私</p>
+    <h2 class="reveal" lang="en">Your plans stay<br>on your Mac.</h2>
+    <h2 class="reveal" lang="zh-Hans">你的计划，<br>只留在你的 Mac 上。</h2>
+    <div class="tiles">
+      <div class="tile reveal"><div class="big" lang="en">Offline</div><div class="big" lang="zh-Hans">离线可用</div>
+        <p lang="en">Everything works without a connection. The only download is the ccfddl conference data.</p>
+        <p lang="zh-Hans">没有网络也一切照常。唯一的下载是 ccfddl 的会议数据。</p></div>
+      <div class="tile reveal" style="--delay: .08s"><div class="big" lang="en">No account</div><div class="big" lang="zh-Hans">无需账户</div>
+        <p lang="en">No sign-in, no analytics, no telemetry. Email goes out from your own Mail, only when you press Send.</p>
+        <p lang="zh-Hans">不用登录，没有统计和遥测。邮件从你自己的"邮件"发出，只在你点发送时。</p></div>
+      <div class="tile reveal" style="--delay: .16s"><div class="big" lang="en">One app</div><div class="big" lang="zh-Hans">一个 App</div>
+        <p lang="en">No installer, no helper. Remove All Data empties everything it stored.</p>
+        <p lang="zh-Hans">没有安装器，没有附带程序。"移除所有数据"会清空它存过的一切。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="download" id="download">
+  <img class="icon reveal" src="images/icon.png" alt="" width="256" height="256">
+  <h2 class="reveal" lang="en">Free. Open source.<br>Made for PhD students.</h2>
+  <h2 class="reveal" lang="zh-Hans">免费，开源，<br>为博士生而做。</h2>
+  <div class="ctas reveal" style="--delay: .08s">
+    <a class="button" href="https://github.com/zhiheng-yang/DrBar/releases"><span lang="en">Download for Mac</span><span lang="zh-Hans">下载 Mac 版</span></a>
+    <a class="more" href="https://github.com/zhiheng-yang/DrBar"><span lang="en">View the source on GitHub</span><span lang="zh-Hans">在 GitHub 上查看源码</span></a>
+  </div>
+  <p class="fine" lang="en">macOS 14 or later · English and Simplified Chinese · MIT License</p>
+  <p class="fine" lang="zh-Hans">macOS 14 或更高版本 · 英文和简体中文 · MIT 许可证</p>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Zhiheng Yang</span>
+    <span lang="en">Conference data by the <a href="https://github.com/ccfddl/ccf-deadlines">ccfddl</a> contributors. Always check a conference's own website before you submit.</span>
+    <span lang="zh-Hans">会议数据来自 <a href="https://github.com/ccfddl/ccf-deadlines">ccfddl</a> 的贡献者。投稿前请以会议官网为准。</span>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    var motion = root.classList.contains("motion");
+    var watches = "IntersectionObserver" in window;
+    var systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+    var titles = {
+      "en": "DrBar — Every deadline, one timeline, in your menu bar",
+      "zh-Hans": "DrBar — 每个 DDL，一条时间轴，就在菜单栏里"
+    };
+    var restyles = [];
+
+    function lang() { return root.getAttribute("data-lang"); }
+    function isDark() {
+      var theme = root.getAttribute("data-theme");
+      return theme === "dark" || (theme !== "light" && systemDark.matches);
+    }
+    function remember(key, value) {
+      try { localStorage.setItem(key, value); } catch (e) {}
+    }
+    function press(attribute, value) {
+      document.querySelectorAll("[" + attribute + "]").forEach(function (button) {
+        button.setAttribute("aria-pressed", String(button.getAttribute(attribute) === value));
+      });
+    }
+    // The names of what has no words of its own, in the page's language.
+    function name() {
+      document.querySelectorAll("[data-label-en]").forEach(function (element) {
+        var text = element.getAttribute("data-label-" + lang()) || element.getAttribute("data-label-en");
+        element.setAttribute("aria-label", text);
+        if (element.tagName === "BUTTON") element.setAttribute("title", text);
+      });
+    }
+    function restyle() { restyles.forEach(function (call) { call(); }); }
+
+    document.querySelectorAll("[data-set-lang]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var value = button.getAttribute("data-set-lang");
+        root.setAttribute("data-lang", value);
+        root.setAttribute("lang", value);
+        document.title = titles[value];
+        press("data-set-lang", value);
+        name();
+        remember("drbar-lang", value);
+        restyle();
+      });
+    });
+    document.querySelectorAll("[data-set-theme]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var value = button.getAttribute("data-set-theme");
+        if (value === "auto") root.removeAttribute("data-theme"); else root.setAttribute("data-theme", value);
+        press("data-set-theme", value);
+        remember("drbar-theme", value);
+        restyle();
+      });
+    });
+    if (systemDark.addEventListener) {
+      systemDark.addEventListener("change", function () { if (!root.hasAttribute("data-theme")) restyle(); });
+    }
+
+    // The menu bar item, drawn as the app draws it, in points: a frame 22 high whose outline, 3.5
+    // thick, goes round once, clockwise from the middle of its top edge, and inside it, clear of
+    // the outline, a symbol, a name and days.
+    var Label = (function () {
+      var NS = "http://www.w3.org/2000/svg";
+      var height = 22;
+      var line = 3.5;
+      // SF Symbols at 11 points, semibold, each in its box.
+      var symbols = {
+        cap: { width: 18, height: 16, d: "M3.34 7.84 3.34 9.62 3.56 10.28 3.97 10.84 3.97 8.12ZM14.06 7.81 10.38 9.53 9.75 9.75 9.16 9.88 8.25 9.88 7.66 9.75 6.97 9.50 4.84 8.53 4.84 11.53 4.78 11.56 4.62 11.47 4 10.91 4 12.06 3.62 12.34 3.50 12.62 3.50 14.41 3.59 14.66 3.75 14.84 4.09 15 4.69 15 5.06 14.84 5.25 14.59 5.31 14.41 5.31 12.66 5.16 12.31 4.81 12.06 4.81 11.59 4.84 11.56 5.75 12 6.59 12.25 7.78 12.44 9.22 12.47 10.16 12.38 11.19 12.16 12.06 11.84 12.66 11.53 13.06 11.25 13.47 10.88 13.81 10.41 13.97 10.06 14.06 9.69ZM1.38 5.28 1.38 5.56 1.44 5.78 1.75 6.16 3.97 7.16 7.47 5.53 7.47 5.28 7.56 5.12 7.94 4.84 8.34 4.72 8.84 4.69 9.34 4.78 9.56 4.88 9.75 5 9.97 5.28 9.97 5.56 9.91 5.69 9.66 5.94 9.22 6.12 8.78 6.19 8.12 6.09 4.88 7.59 7.38 8.75 7.91 8.94 8.34 9.03 9.25 9 10.25 8.66 15.50 6.25 15.88 5.94 16.03 5.59 16 5.16 15.84 4.88 15.59 4.66 10 2.09 9.56 1.94 8.91 1.81 8.25 1.84 7.56 2.03 2.47 4.34 1.69 4.75 1.50 4.97Z" },
+        page: { width: 13, height: 14, d: "M3.75 9.88 3.78 10.19 3.88 10.28 4.03 10.34 7.94 10.34 8.09 10.28 8.22 10.12 8.19 9.81 8.09 9.72 7.91 9.66 4.06 9.66 3.88 9.72ZM3.75 8.12 3.78 8.44 4 8.59 7.97 8.59 8.06 8.56 8.22 8.38 8.22 8.12 8.03 7.94 3.94 7.94ZM2 1.62 1.62 2.03 1.47 2.38 1.38 2.84 1.38 11.50 1.50 12.03 1.72 12.44 1.94 12.66 2.25 12.84 2.88 13 9.19 13 9.53 12.94 10.03 12.72 10.31 12.47 10.50 12.19 10.62 11.84 10.69 11.50 10.69 5.91 10.56 5.34 10.31 4.91 7.31 1.84 7 1.59 6.69 1.44 6.31 1.34 5.97 1.34 5.94 1.31 3.06 1.31 2.47 1.41ZM6.53 2.62 9.38 5.53 9.34 5.56 6.78 5.56 6.62 5.50 6.50 5.34 6.50 2.66ZM2.78 2.62 3.06 2.50 5.47 2.50 5.50 2.53 5.50 5.38 5.53 5.69 5.69 6.09 5.97 6.38 6.44 6.53 9.47 6.53 9.53 6.59 9.53 11.19 9.41 11.56 9.25 11.72 8.91 11.84 3.16 11.84 2.91 11.78 2.66 11.56 2.53 11.22 2.53 3.12 2.59 2.88Z" },
+        alert: { width: 5, height: 13, d: "M2.12 10.16 1.81 10.28 1.56 10.50 1.41 10.78 1.38 11.22 1.47 11.50 1.78 11.84 2.03 11.97 2.50 12 2.88 11.84 3.12 11.59 3.28 11.22 3.28 10.94 3.16 10.59 2.94 10.34 2.53 10.16ZM2.19 1.78 1.81 1.94 1.66 2.12 1.56 2.38 1.62 7.94 1.66 7.97 1.66 8.41 1.81 8.72 2.06 8.88 2.50 8.91 2.69 8.84 2.91 8.66 3.03 8.28 3.09 2.34 3.03 2.16 2.81 1.91 2.47 1.78Z" }
+      };
+      // SwiftUI's continuous corner at this height, from the end of a straight edge to the middle
+      // of the side, as distances in from the corner: along the edge, then along the side.
+      var reach = 10.7771;
+      var corner = [[7.6739, 0], [6.1223, 0], [4.452, 0.5281], [2.6284, 1.1919], [1.1919, 2.6284],
+        [0.5281, 4.452], [0, 5.9824], [0, 7.3027], [0, 9.25]];
+      var back = corner.slice(0, -1).reverse().concat([[reach, 0]]);
+      var urgent = { near: "var(--sys-orange)", critical: "var(--sys-red)" };
+      var widths = {};
+      var masks = 0;
+
+      function node(tag, attributes, parent) {
+        var element = document.createElementNS(NS, tag);
+        for (var key in attributes) element.setAttribute(key, attributes[key]);
+        parent.appendChild(element);
+        return element;
+      }
+      function curves(points, x, y) {
+        return points.map(function (point, index) {
+          return (index % 3 ? " " : "C") + x(point[0]).toFixed(3) + " " + y(point[1]).toFixed(3);
+        }).join("");
+      }
+      function outline(width) {
+        var left = line / 2, right = width - line / 2, top = line / 2, bottom = height - line / 2;
+        function fromRight(u) { return right - u; }
+        function fromLeft(u) { return left + u; }
+        function fromTop(v) { return top + v; }
+        function fromBottom(v) { return bottom - v; }
+        return "M" + width / 2 + " " + top + "H" + (right - reach).toFixed(3) +
+          curves(corner, fromRight, fromTop) + curves(back, fromRight, fromBottom) +
+          "H" + (left + reach).toFixed(3) +
+          curves(corner, fromLeft, fromBottom) + curves(back, fromLeft, fromTop) + "Z";
+      }
+      function measure(svg, text, days) {
+        var key = (days ? "#" : "") + text;
+        if (!widths[key]) {
+          var probe = node("text", { "class": days ? "label-text days" : "label-text" }, svg);
+          probe.textContent = text;
+          var width = probe.getComputedTextLength();
+          svg.removeChild(probe);
+          if (!width) return 6 * text.length;
+          widths[key] = width;
+        }
+        return widths[key];
+      }
+      function paint(element, property, value) { element.style[property] = value; }
+
+      // One frame at `x`, returning its width.
+      function frame(svg, item, x) {
+        var group = node("g", { transform: "translate(" + x + " 0)" }, svg);
+        var pad = line + (item.name || item.days ? 4 : 3.5);
+        var pieces = [];
+        var at = pad;
+        function place(width) {
+          if (pieces.length) at += 3;
+          var start = at;
+          at += width;
+          return start;
+        }
+        if (item.symbol) pieces.push({ symbol: symbols[item.symbol], x: place(symbols[item.symbol].width) });
+        if (item.name) pieces.push({ text: item.name, x: place(measure(svg, item.name)) });
+        if (item.dot && item.name && item.days) pieces.push({ text: "·", x: place(measure(svg, "·")) });
+        if (item.days) pieces.push({ text: item.days, days: true, x: place(measure(svg, item.days, true)) });
+        var width = Math.max(at + pad, height);
+        var shift = (width - at - pad) / 2;
+
+        var d = outline(width);
+        var loop = node("g", {}, group);
+        var track = node("path", { d: d, fill: "none", "stroke-width": line }, loop);
+        paint(track, "stroke", "var(--item-track)");
+        var length = track.getTotalLength();
+        function part(from, to, color, opacity) {
+          var path = node("path", {
+            d: d, fill: "none", "stroke-width": line, "stroke-linecap": "round", pathLength: 1,
+            "stroke-dasharray": (to - from) + " 2", "stroke-dashoffset": -from
+          }, loop);
+          paint(path, "stroke", color);
+          if (opacity < 1) paint(path, "strokeOpacity", opacity);
+        }
+        function point(share) {
+          return track.getPointAtLength(((share % 1) + 1) % 1 * length);
+        }
+        var plan = item.plan;
+        if (plan) {
+          // Each block's ends drawn in by its round cap and a little gap, so that blocks stay apart.
+          var inset = (line / 2 + 0.6) / length;
+          plan.stretches.forEach(function (stretch) {
+            var from = stretch.from + inset;
+            part(from, Math.max(stretch.to - inset, from + 0.0005), stretch.color, stretch.done ? 1 : 0.4);
+          });
+          if (plan.deadline != null) {
+            var before = point(plan.deadline - 0.25 / length), after = point(plan.deadline + 0.25 / length);
+            var mid = point(plan.deadline);
+            var dx = after.x - before.x, dy = after.y - before.y, norm = Math.sqrt(dx * dx + dy * dy) || 1;
+            var nx = -dy / norm * (line / 2 + 0.5), ny = dx / norm * (line / 2 + 0.5);
+            var mark = node("path", {
+              d: "M" + (mid.x - nx) + " " + (mid.y - ny) + "L" + (mid.x + nx) + " " + (mid.y + ny),
+              "stroke-width": 1.8, "stroke-linecap": "round"
+            }, loop);
+            paint(mark, "stroke", "var(--sys-red)");
+          }
+          if (plan.today != null) {
+            // Today, a bead set off from the outline by a gap cut through it.
+            var bead = point(plan.today);
+            var id = "label-gap-" + (++masks);
+            var mask = node("mask", { id: id, maskUnits: "userSpaceOnUse", x: -1, y: -1, width: width + 2, height: height + 2 }, group);
+            node("rect", { x: -1, y: -1, width: width + 2, height: height + 2, fill: "#fff" }, mask);
+            node("circle", { cx: bead.x, cy: bead.y, r: line / 2 + 1.2, fill: "#000" }, mask);
+            loop.setAttribute("mask", "url(#" + id + ")");
+            var dot = node("circle", { cx: bead.x, cy: bead.y, r: line / 2 + 0.2 }, group);
+            paint(dot, "fill", plan.status === "conflict" ? "var(--sys-red)" : plan.status === "behind" ? "var(--sys-orange)" : "var(--label)");
+          }
+        } else if (item.from < 1) {
+          part(item.from, 1, urgent[item.urgency] || "var(--calm)", item.urgency === "later" ? 0.5 : 1);
+        }
+
+        pieces.forEach(function (piece) {
+          if (piece.symbol) {
+            var glyph = node("path", {
+              d: piece.symbol.d, "fill-rule": "evenodd",
+              transform: "translate(" + (piece.x + shift) + " " + ((height - piece.symbol.height) / 2 - 0.4) + ")"
+            }, group);
+            paint(glyph, "fill", item.urgency === "critical" ? "var(--sys-red)" : "var(--label)");
+          } else {
+            var text = node("text", { x: piece.x + shift, y: 15.4, "class": piece.days ? "label-text days" : "label-text" }, group);
+            text.textContent = piece.text;
+            paint(text, "fill", piece.days && urgent[item.urgency] || "var(--label)");
+          }
+        });
+        return width;
+      }
+
+      function urgency(days) {
+        return days <= 3 ? "critical" : days <= 7 ? "near" : days <= 30 ? "soon" : "later";
+      }
+      // A share of the way round, kept to 1/720, as the app keeps it.
+      function share(value) {
+        return Math.round(Math.min(Math.max(value, 0), 1) * 720) / 720;
+      }
+
+      return {
+        // Draws `frames` side by side, as the item holds them.
+        draw: function (svg, frames) {
+          while (svg.firstChild) svg.removeChild(svg.firstChild);
+          var x = 1;
+          frames.forEach(function (item, index) {
+            if (index) x += 4;
+            x += frame(svg, item, x);
+          });
+          x += 1;
+          svg.setAttribute("viewBox", "0 0 " + x + " " + height);
+          svg.style.aspectRatio = x + " / " + height;
+        },
+        // The next deadline, `days` away, its work started `round` days before it, or a conference
+        // followed on its own, on a round of 30: the stretch from now round to the top, the cap, or
+        // a ! in the last three days.
+        countdown: function (days, options) {
+          var whole = Math.floor(days);
+          var level = urgency(whole);
+          return {
+            from: share(1 - days / (options.round || 30)), urgency: level,
+            symbol: options.symbol === false ? null : level === "critical" ? "alert" : "cap",
+            name: options.name, dot: options.dot, days: options.days === false ? null : whole + "d"
+          };
+        },
+        // A paper's plan round the frame, `today` of the way round, with its next deadline `days`
+        // away; its blocks are [from, to, color, done].
+        plan: function (today, days, options) {
+          var whole = Math.floor(days);
+          var level = urgency(whole);
+          return {
+            urgency: level, symbol: level === "critical" ? "alert" : "page", name: options.name, days: whole + "d",
+            plan: {
+              today: today, deadline: options.deadline, status: options.status,
+              stretches: options.blocks.map(function (block) {
+                return { from: share(block[0]), to: share(block[1]), color: block[2], done: block[3] };
+              })
+            }
+          };
+        }
+      };
+    })();
+
+    // The paper of the screenshots, in days from the start of today: its blocks, its abstract
+    // deadline, and its paper deadline, where its plan ends, at the top of the frame.
+    var paper = {
+      name: "Effici…", first: -16, end: 32.54, abstract: 26.54,
+      blocks: [[-16, -2, "var(--calm)"], [-2, 13, "var(--sys-indigo)"], [13, 21, "var(--sys-teal)"],
+        [21, 27, "var(--sys-indigo)"], [27, 31, "var(--sys-gray)"]]
+    };
+    // The paper in the menu bar at `now`, in days from the start of today, the blocks behind it done.
+    function paperAt(now) {
+      var span = paper.end - paper.first;
+      function share(day) { return (day - paper.first) / span; }
+      return Label.plan(share(now), paper.abstract - now, {
+        name: paper.name, deadline: 1, status: "onTrack",
+        blocks: paper.blocks.map(function (block) {
+          return [share(block[0]), share(block[1]), block[2], now >= block[1]];
+        })
+      });
+    }
+    function labelled(name) { return document.querySelector('[data-label="' + name + '"]'); }
+    // At 9:41 in the morning.
+    var stills = {
+      hero: [paperAt(0.4)],
+      soon: [Label.countdown(26.1, { name: "CVPR", dot: true, round: 42.5 })],
+      near: [Label.countdown(6, { name: "ICML", dot: true, round: 21 })],
+      critical: [Label.countdown(2, { name: "KDD", dot: true, round: 14 })],
+      paper: [paperAt(0.4)],
+      name: [Label.countdown(26.1, { name: "CVPR", days: false, round: 42.5 })],
+      days: [Label.countdown(26.1, { name: "CVPR", dot: true, round: 42.5 })],
+      two: [Label.countdown(26.1, { symbol: false, round: 42.5 }), Label.countdown(33, { symbol: false, round: 60 })],
+      symbol: [Label.countdown(26.1, { days: false, round: 42.5 })]
+    };
+    for (var key in stills) Label.draw(labelled(key), stills[key]);
+
+    // Coming into view.
+    var revealer = watches ? new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("in");
+        revealer.unobserve(entry.target);
+        var film = entry.target.film;
+        // A still that has been in sight for a moment stays, rather than give way to a film
+        // that would start by taking its bars away.
+        if (film) setTimeout(function () { if (!film.cued) film.seen = true; }, 300);
+      });
+    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.06 }) : null;
+
+    // Films of the app in motion, each over the still of its last moment, in the page's look and
+    // language. A film that grows its bars shows its first frame in place of the still, as long
+    // as the still has not been seen, plays once as it comes into view, and can then be played
+    // again; the zoom plays while it is in view. A film that is late or cannot play leaves the
+    // still.
+    function Film(element) {
+      var film = this;
+      var video = document.createElement("video");
+      element.film = this;
+      this.element = element;
+      this.video = video;
+      this.loops = element.getAttribute("data-mode") === "loop";
+      this.cued = false;
+      this.seen = false;
+      this.played = false;
+      this.wanted = false;
+      this.inView = false;
+      this.failed = false;
+      video.className = "film-video";
+      video.muted = true;
+      video.loop = this.loops;
+      video.playsInline = true;
+      video.preload = "none";
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("aria-hidden", "true");
+      video.addEventListener("loadeddata", function () { film.cue(); });
+      video.addEventListener("error", function () { film.fail(); });
+      element.appendChild(video);
+      if (!this.loops) {
+        var again = document.createElement("button");
+        again.type = "button";
+        again.className = "replay";
+        again.setAttribute("data-label-en", "Play again");
+        again.setAttribute("data-label-zh-Hans", "再播一次");
+        again.innerHTML = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.2 8a4.8 4.8 0 1 0 1.4-3.4M3 2.5v2.6h2.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+        again.addEventListener("click", function () { film.again(); });
+        element.insertAdjacentElement("afterend", again);
+        video.addEventListener("ended", function () { element.classList.add("ended"); });
+      }
+    }
+    Film.prototype.source = function () {
+      return "media/" + this.element.getAttribute("data-film") + "-" + (isDark() ? "dark" : "light") +
+        (lang() === "zh-Hans" ? "-zh" : "") + ".mp4";
+    };
+    Film.prototype.prepare = function () {
+      var source = this.source();
+      if (this.failed || this.video.getAttribute("src") === source) return;
+      this.cued = false;
+      this.video.setAttribute("src", source);
+      this.video.preload = "auto";
+      this.video.load();
+    };
+    Film.prototype.cue = function () {
+      if (this.cued) return;
+      this.cued = true;
+      var element = this.element;
+      var hidden = element.classList.contains("pending");
+      if (this.loops || this.wanted || (!this.played && (hidden || !this.seen))) {
+        element.classList.remove("pending");
+        element.classList.add("rolling");
+        if (this.wanted) this.play(); else if (this.inView) this.start();
+      } else {
+        element.classList.add("ended");
+      }
+    };
+    // A growing film starts a moment after it comes into view, once its entrance has settled.
+    Film.prototype.start = function () {
+      var film = this;
+      if (this.loops) {
+        this.play();
+        return;
+      }
+      if (this.played || this.timer) return;
+      this.timer = setTimeout(function () {
+        film.timer = null;
+        if (film.inView && film.cued && !film.played) film.play();
+      }, 600);
+    };
+    Film.prototype.play = function () {
+      var film = this;
+      var element = this.element;
+      this.wanted = false;
+      this.played = true;
+      element.classList.remove("ended", "pending");
+      element.classList.add("rolling");
+      if (!this.loops) {
+        try { this.video.currentTime = 0; } catch (e) {}
+      }
+      var playing = this.video.play();
+      if (playing && playing.catch) playing.catch(function () { film.still(); });
+    };
+    // The still stays, and a growing film can be played by hand.
+    Film.prototype.still = function () {
+      this.seen = true;
+      this.video.pause();
+      this.element.classList.remove("pending", "rolling");
+      if (!this.loops) this.element.classList.add("ended");
+    };
+    Film.prototype.fail = function () {
+      this.failed = true;
+      this.element.classList.remove("pending", "rolling", "ended");
+    };
+    Film.prototype.again = function () {
+      this.wanted = true;
+      this.element.classList.remove("ended");
+      if (this.cued && this.video.getAttribute("src") === this.source()) this.play(); else this.prepare();
+    };
+    Film.prototype.enter = function () {
+      var film = this;
+      this.inView = true;
+      if (this.failed) return;
+      if (this.cued) {
+        if (this.loops || this.element.classList.contains("rolling")) this.start();
+        return;
+      }
+      this.prepare();
+      // The window under the menu bar waits a moment for its film, then shows its still.
+      if (this.element.classList.contains("pending") && !this.waiting) {
+        this.waiting = setTimeout(function () { if (!film.cued && !film.failed) film.still(); }, 900);
+      }
+    };
+    Film.prototype.leave = function () {
+      this.inView = false;
+      if (this.loops && !this.video.paused) this.video.pause();
+    };
+    // In a new look, the zoom goes on in it; a growing film that has been seen leaves the new
+    // still, to be played again in the new look.
+    Film.prototype.restyle = function () {
+      var source = this.video.getAttribute("src");
+      if (this.failed || !source || source === this.source()) return;
+      if (this.loops || !(this.played || this.seen)) {
+        this.prepare();
+        return;
+      }
+      this.video.pause();
+      this.video.removeAttribute("src");
+      this.video.load();
+      this.cued = false;
+      this.element.classList.remove("rolling");
+      this.element.classList.add("ended");
+    };
+
+    var films = [];
+    if (motion && watches) {
+      document.querySelectorAll(".film").forEach(function (element) { films.push(new Film(element)); });
+      var nearby = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { if (entry.isIntersecting) entry.target.film.prepare(); });
+      }, { rootMargin: "100% 0px" });
+      var watching = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.intersectionRatio >= 0.35) entry.target.film.enter(); else entry.target.film.leave();
+        });
+      }, { threshold: [0, 0.35] });
+      films.forEach(function (film) {
+        nearby.observe(film.element);
+        watching.observe(film.element);
+      });
+      restyles.push(function () { films.forEach(function (film) { film.restyle(); }); });
+    } else {
+      document.querySelectorAll(".film.pending").forEach(function (element) { element.classList.remove("pending"); });
+    }
+    document.querySelectorAll(".reveal").forEach(function (item) {
+      if (revealer && motion) revealer.observe(item); else item.classList.add("in");
+    });
+
+    // The story of the menu bar, told by the scroll: a deadline counted down from the day its work
+    // started to its last day, then a paper's plan going round as its days pass.
+    var countdown = labelled("countdown");
+    var planned = labelled("plan");
+    var captions = document.querySelectorAll(".caption");
+    var ticks = document.querySelectorAll(".meter i");
+    var track = document.querySelector(".story-track");
+    var stage = document.querySelector(".story-stage");
+    var drawn = {};
+    var step = -1;
+    function along(progress, points) {
+      for (var i = 1; i < points.length; i++) {
+        if (progress <= points[i][0]) {
+          var a = points[i - 1], b = points[i];
+          var t = Math.min(Math.max((progress - a[0]) / (b[0] - a[0]), 0), 1);
+          return a[1] + (b[1] - a[1]) * t;
+        }
+      }
+      return points[points.length - 1][1];
+    }
+    function redraw(svg, frames) {
+      var key = JSON.stringify(frames);
+      if (drawn[svg.getAttribute("data-label")] === key) return;
+      drawn[svg.getAttribute("data-label")] = key;
+      Label.draw(svg, frames);
+    }
+    function fade(svg, shown) {
+      svg.style.opacity = String(shown);
+      svg.style.filter = shown < 1 ? "blur(" + ((1 - shown) * 6).toFixed(2) + "px)" : "";
+      svg.style.transform = shown < 1 ? "scale(" + (0.97 + 0.03 * shown).toFixed(4) + ")" : "";
+    }
+    function tell(progress) {
+      var days = along(progress, [[0, 45], [0.1, 41.2], [0.34, 7.6], [0.44, 3.6], [0.54, 1.3]]);
+      var now = along(progress, [[0.6, -13], [1, 22]]);
+      redraw(countdown, [Label.countdown(days, { name: "CVPR", dot: true, round: 45 })]);
+      redraw(planned, [paperAt(now)]);
+      fade(countdown, 1 - along(progress, [[0.565, 0], [0.595, 1]]));
+      fade(planned, along(progress, [[0.6, 0], [0.63, 1]]));
+      var whole = Math.floor(days);
+      var told = progress < 0.6 ? (whole > 41 ? 0 : whole > 7 ? 1 : whole > 3 ? 2 : 3) : (now < 2 ? 4 : 5);
+      if (told !== step) {
+        step = told;
+        captions.forEach(function (caption, index) { caption.classList.toggle("on", index === told); });
+        ticks.forEach(function (tick, index) { tick.classList.toggle("on", index <= told); });
+      }
+    }
+    if (motion) {
+      var pending = false;
+      var scrolled = function () {
+        pending = false;
+        var span = track.offsetHeight - stage.offsetHeight;
+        var into = stage.getBoundingClientRect().top - track.getBoundingClientRect().top;
+        tell(span > 0 ? Math.min(Math.max(into / span, 0), 1) : 0);
+      };
+      window.addEventListener("scroll", function () {
+        if (!pending) {
+          pending = true;
+          requestAnimationFrame(scrolled);
+        }
+      }, { passive: true });
+      window.addEventListener("resize", scrolled);
+      scrolled();
+    } else {
+      // Two moments: twelve days to the deadline, and a plan half done.
+      Label.draw(countdown, [Label.countdown(12, { name: "CVPR", dot: true, round: 45 })]);
+      Label.draw(planned, stills.paper);
+    }
+
+    // The highlights move a card at a time with the arrows.
+    var gallery = document.querySelector(".gallery");
+    var arrows = document.querySelectorAll("[data-gallery]");
+    function edges() {
+      arrows[0].disabled = gallery.scrollLeft <= 2;
+      arrows[1].disabled = gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 2;
+    }
+    arrows.forEach(function (arrow) {
+      arrow.addEventListener("click", function () {
+        var card = gallery.querySelector(".card");
+        var by = (card ? card.getBoundingClientRect().width + 22 : 400) * Number(arrow.getAttribute("data-gallery"));
+        gallery.scrollBy({ left: by, behavior: motion ? "smooth" : "auto" });
+      });
+    });
+    gallery.addEventListener("scroll", edges, { passive: true });
+    window.addEventListener("resize", edges);
+    edges();
+
+    document.title = titles[lang()];
+    press("data-set-lang", lang());
+    press("data-set-theme", root.getAttribute("data-theme") || "auto");
+    name();
+  })();
+</script>
+</body>
+</html>

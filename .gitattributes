@@ -1,0 +1,7 @@
+* text=auto eol=lf
+
+*.png binary
+*.mp4 binary
+
+# The bundled ccfddl snapshot is refreshed by a script; its diffs are folded away on GitHub.
+App/Resources/allconf.yml linguist-generated=true

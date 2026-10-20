@@ -1,0 +1,200 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Add a block to ${work} in ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Add a block to ${work} in ${applicationName}",
+              "Plan ${kind} in ${applicationName}",
+              "Add a block in ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "在${applicationName}里给${work}加时间块",
+              "在${applicationName}里安排${kind}",
+              "在${applicationName}里加时间块"
+            ]
+          }
+        }
+      }
+    },
+    "Add a deadline to ${work} in ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Add a deadline to ${work} in ${applicationName}",
+              "Add a deadline in ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "在${applicationName}里给${work}加DDL",
+              "在${applicationName}里加DDL"
+            ]
+          }
+        }
+      }
+    },
+    "Add to ${group} in ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Add to ${group} in ${applicationName}",
+              "Add a new item in ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "在${applicationName}里添加到${group}",
+              "在${applicationName}里新建事项"
+            ]
+          }
+        }
+      }
+    },
+    "Extend a block of ${work} in ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Extend a block of ${work} in ${applicationName}",
+              "Shorten a block of ${work} in ${applicationName}",
+              "Change when a block of ${work} ends in ${applicationName}",
+              "Extend a block in ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "在${applicationName}里延长${work}的时间块",
+              "在${applicationName}里缩短${work}的时间块",
+              "在${applicationName}里修改${work}时间块的结束日期",
+              "在${applicationName}里延长时间块"
+            ]
+          }
+        }
+      }
+    },
+    "Mark a block of ${work} as done in ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Mark a block of ${work} as done in ${applicationName}",
+              "Check off a block of ${work} in ${applicationName}",
+              "Mark a block as done in ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "在${applicationName}里把${work}的时间块标为完成",
+              "在${applicationName}里完成${work}的时间块",
+              "在${applicationName}里把时间块标为完成"
+            ]
+          }
+        }
+      }
+    },
+    "Move a block of ${work} in ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Move a block of ${work} in ${applicationName}",
+              "Postpone a block of ${work} in ${applicationName}",
+              "Bring forward a block of ${work} in ${applicationName}",
+              "Move a block in ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "在${applicationName}里移动${work}的时间块",
+              "在${applicationName}里推迟${work}的时间块",
+              "在${applicationName}里提前${work}的时间块",
+              "在${applicationName}里移动时间块"
+            ]
+          }
+        }
+      }
+    },
+    "Open ${work} in ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "Open ${work} in ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "在${applicationName}里打开${work}"
+            ]
+          }
+        }
+      }
+    },
+    "What’s next in ${applicationName}" : {
+      "extractionState" : "extracted_with_value",
+      "localizations" : {
+        "en" : {
+          "stringSet" : {
+            "state" : "new",
+            "values" : [
+              "What’s next in ${applicationName}",
+              "Next deadline in ${applicationName}"
+            ]
+          }
+        },
+        "zh-Hans" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "${applicationName}里接下来是什么",
+              "${applicationName}的下一个DDL"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

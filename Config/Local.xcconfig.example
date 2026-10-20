@@ -1,0 +1,11 @@
+// Copy to Config/Local.xcconfig (not committed) and fill in your own values.
+
+// A reverse-DNS prefix you own, e.g. io.github.<your GitHub user name>.
+BUNDLE_ID_PREFIX = io.github.yourname
+
+// Optional: an Apple team ID (Xcode > Settings > Apple Accounts, or developer.apple.com >
+// Membership). The free team of any Apple ID signs builds for this Mac, which Siri trusts more
+// than a build signed to run locally; a team of the paid Apple Developer Program also signs
+// releases with Developer ID (scripts/release.sh).
+// DEVELOPMENT_TEAM = ABCDE12345
+// CODE_SIGN_IDENTITY = Apple Development

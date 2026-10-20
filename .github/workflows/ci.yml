@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Lint and test
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: Show the Xcode version
+        run: xcodebuild -version
+      - name: Lint
+        run: xcrun swift-format lint --recursive --strict App Packages/DrBarKit/Sources Packages/DrBarKit/Tests
+      - name: Test
+        run: swift test --package-path Packages/DrBarKit
+
+  build:
+    name: Build the app
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+      - name: Show the Xcode version
+        run: xcodebuild -version
+      - name: Install XcodeGen
+        run: brew install xcodegen
+      - name: Generate the project
+        run: xcodegen generate
+      - name: Build
+        run: |
+          xcodebuild -project DrBar.xcodeproj -scheme DrBar -configuration Release \
+            -destination 'generic/platform=macOS' CODE_SIGNING_ALLOWED=NO build

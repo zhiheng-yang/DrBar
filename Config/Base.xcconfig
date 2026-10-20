@@ -1,0 +1,22 @@
+// Build settings for the app.
+//
+// Personal values (Apple team ID, bundle ID prefix) belong in Config/Local.xcconfig, which is
+// not committed. Copy Config/Local.xcconfig.example to start; scripts/bootstrap.sh does this.
+
+// Choose once and never change: the bundle ID owns the notification permission, the
+// launch-at-login state and the sandbox data folder.
+BUNDLE_ID_PREFIX = io.github.zhiheng-yang
+
+// Empty: signed to run locally, as releases are too. A team, set in Local.xcconfig, is only needed
+// to sign with Developer ID (scripts/release.sh).
+DEVELOPMENT_TEAM =
+CODE_SIGN_STYLE = Automatic
+CODE_SIGN_IDENTITY = -
+
+MARKETING_VERSION = 0.1.0
+CURRENT_PROJECT_VERSION = 1
+
+SWIFT_VERSION = 6.0
+MACOSX_DEPLOYMENT_TARGET = 14.0
+
+#include? "Local.xcconfig"

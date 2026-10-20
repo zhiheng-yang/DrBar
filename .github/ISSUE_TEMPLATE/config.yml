@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: A conference deadline is wrong or missing
+    url: https://github.com/ccfddl/ccf-deadlines/issues
+    about: DrBar shows ccfddl's data as it is. Please report it to ccfddl; DrBar picks up the fix within 12 hours.

@@ -1,0 +1,203 @@
+# ccfddl snapshot 2026-10-12
+# Hand-written test data in ccfddl's format. Each entry covers one case the parser must handle.
+
+# A normal conference: abstract and paper deadline, previous editions for "last edition".
+- title: CVPR
+  description: IEEE/CVF Conference on Computer Vision and Pattern Recognition
+  sub: AI
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: cvpr
+  conference_key: AI/cvpr
+  confs:
+  - year: 2023
+    id: cvpr23
+    link: https://cvpr2023.thecvf.com/
+    timeline:
+    - deadline: '2022-11-11 23:59:59'
+    timezone: UTC-8
+    date: June 18-22, 2023
+    place: Vancouver, Canada
+  - year: 2026
+    id: cvpr26
+    link: https://cvpr.thecvf.com/Conferences/2026
+    timeline:
+    - abstract_deadline: '2025-11-06 23:59:59'
+      deadline: '2025-11-13 23:59:59'
+    timezone: UTC-12
+    date: June 3-7, 2026
+    place: Denver, CO, USA
+  - year: 2027
+    id: cvpr27
+    link: https://cvpr.thecvf.com/Conferences/2027
+    timeline:
+    - abstract_deadline: '2026-11-10 23:59:59'
+      deadline: '2026-11-16 23:59:59'
+      rebuttal_deadline: '2027-02-01 23:59:59'
+      decision_deadline: '2027-02-25 23:59:59'
+    timezone: UTC-12
+    date: June 20-25, 2027
+    place: Seattle, WA, United States
+  - year: 2028
+    id: cvpr28
+    link: https://cvpr.thecvf.com/
+    timeline:
+    - deadline: TBD
+    timezone: AoE
+    date: TBD
+    place: TBD
+
+# Several rounds with comments, one repeated, and one without.
+- title: SIGMOD
+  description: ACM Conference on Management of Data
+  sub: DB
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: sigmod
+  conference_key: DB/sigmod
+  confs:
+  - year: 2027
+    id: sigmod27
+    link: https://2027.sigmod.org/
+    timeline:
+    - deadline: '2026-07-17 23:59:59'
+      comment: round 3
+    - abstract_deadline: '2026-10-10 23:59:59'
+      deadline: '2026-10-17 23:59:59'
+      comment: round 4
+    - deadline: '2026-12-01 23:59:59'
+      comment: Extended round
+    - deadline: '2027-01-15 23:59:59'
+      comment: Extended round
+    - deadline: '2027-02-15 23:59:59'
+    timezone: AoE
+    date: TBD
+    place: TBD
+
+# Deadline not announced yet.
+- title: COLT
+  description: Annual Conference on Learning Theory
+  sub: AI
+  rank:
+    ccf: B
+    core: A*
+    thcpl: B
+  dblp: colt
+  conference_key: AI/colt
+  confs:
+  - year: 2026
+    id: colt26
+    link: https://learningtheory.org/colt2026/
+    timeline:
+    - deadline: '2026-02-04 16:59:59'
+    timezone: UTC-5
+    date: June 29-July 3, 2026
+    place: San Diego, USA
+  - year: 2027
+    id: colt27
+    link: https://learningtheory.org/
+    timeline:
+    - deadline: TBD
+    timezone: AoE
+    date: TBD
+    place: TBD
+
+# Pacific time with daylight saving, and a year written as a string.
+- title: VLDB
+  description: International Conference on Very Large Data Bases
+  sub: DB
+  rank:
+    ccf: A
+    core: A*
+    thcpl: A
+  dblp: vldb
+  conference_key: DB/vldb
+  confs:
+  - year: '2027'
+    id: vldb27
+    link: https://vldb.org/2027/
+    timeline:
+    - abstract_deadline: '2026-07-25 17:00:00'
+      deadline: '2026-08-01 17:00:00'
+      comment: Summer
+    - abstract_deadline: '2026-10-25 17:00:00'
+      deadline: '2026-11-01 17:00:00'
+      comment: Autumn
+    timezone: PT
+    date: August 30-September 3, 2027
+    place: TBD
+
+# An unrecognized time zone, and no conference_key (the key falls back to sub/title).
+- title: OddConf
+  description: A conference with an unusual time zone
+  sub: MX
+  rank:
+    ccf: N
+  dblp: odd
+  confs:
+  - year: 2027
+    id: odd27
+    link: not a url
+    timeline:
+    - deadline: '2026-12-01 23:59:59'
+    timezone: CET
+    date: TBD
+    place: TBD
+
+# A date without a time, an impossible date, and an abstract-only round.
+- title: EdgeConf
+  description: Edge cases
+  sub: SE
+  rank:
+    ccf: C
+  dblp: edge
+  conference_key: SE/edge
+  confs:
+  - year: 2027
+    id: edge27
+    link: https://example.org/edge
+    timeline:
+    - deadline: '2026-12-20'
+      comment: Date only
+    - deadline: '2026-11-31 23:59:59'
+      comment: Impossible
+    - abstract_deadline: '2026-12-24 23:59:59'
+      deadline: TBD
+      comment: Abstract only
+    timezone: UTC+8
+    date: May 2027
+    place: Online
+
+# Malformed entries: each is skipped on its own.
+- description: No title, so this whole series is skipped
+  sub: AI
+  rank:
+    ccf: A
+  conference_key: AI/broken
+  confs: []
+- title: HalfBroken
+  description: One good edition and one without an id
+  sub: NW
+  rank:
+    ccf: B
+  conference_key: NW/half
+  confs:
+  - year: 2027
+    link: https://example.org/no-id
+    timeline:
+    - deadline: '2027-01-10 23:59:59'
+    timezone: AoE
+  - year: 2027
+    id: half27
+    link: https://example.org/half
+    timeline:
+    - deadline: '2027-01-10 23:59:59'
+    - deadline: 2027-01-20 23:59:59
+      comment: unquoted timestamp
+    timezone: UTC
+    date: TBD
+    place: TBD

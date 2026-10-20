@@ -1,0 +1,407 @@
+{
+  "archive" : [
+    {
+      "archivedAt" : "2026-09-30T10:00:00Z",
+      "blocks" : [
+
+      ],
+      "createdAt" : "2026-03-01T10:00:00Z",
+      "deadlines" : [
+
+      ],
+      "doneDeadlines" : [
+
+      ],
+      "githubURL" : "",
+      "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000040",
+      "milestones" : [
+
+      ],
+      "notes" : "",
+      "overleafURL" : "",
+      "stage" : "decided",
+      "target" : {
+        "conference" : {
+          "round" : "#1",
+          "series" : "AI/iclr",
+          "year" : 2026
+        }
+      },
+      "threads" : [
+
+      ],
+      "title" : "Graph Transformers for Code",
+      "todos" : [
+
+      ],
+      "visibleTo" : [
+
+      ]
+    }
+  ],
+  "deletedParts" : [
+    {
+      "block" : {
+        "customName" : "",
+        "end" : "2026-11-13",
+        "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000060",
+        "isDone" : false,
+        "kind" : "review",
+        "people" : [
+
+        ],
+        "start" : "2026-11-07"
+      },
+      "deletedAt" : "2026-10-19T10:00:00Z",
+      "index" : 2,
+      "paperID" : "6E8DAB3F-4C50-4D7E-9FA0-000000000020"
+    },
+    {
+      "deletedAt" : "2026-10-19T11:00:00Z",
+      "index" : 1,
+      "milestone" : {
+        "day" : "2026-11-12",
+        "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000061",
+        "isDone" : false,
+        "title" : "Internal deadline"
+      },
+      "paperID" : "6E8DAB3F-4C50-4D7E-9FA0-000000000020"
+    },
+    {
+      "deadline" : {
+        "date" : "2027-01-15T10:00:00Z",
+        "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000062",
+        "isDone" : false,
+        "link" : "",
+        "note" : "",
+        "timeZone" : "AoE",
+        "title" : "Interview"
+      },
+      "deletedAt" : "2026-10-19T12:00:00Z",
+      "index" : 1,
+      "paperID" : "6E8DAB3F-4C50-4D7E-9FA0-000000000031",
+      "wasMain" : false
+    },
+    {
+      "deletedAt" : "2026-10-19T13:00:00Z",
+      "index" : 2,
+      "paperID" : "6E8DAB3F-4C50-4D7E-9FA0-000000000020",
+      "todo" : {
+        "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000063",
+        "isDone" : false,
+        "title" : "Plot the curves"
+      }
+    }
+  ],
+  "favoriteSeries" : [
+    "AI/cvpr",
+    "DB/sigmod"
+  ],
+  "formatVersion" : 1,
+  "groups" : [
+    {
+      "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000006",
+      "name" : "Applications",
+      "symbol" : "briefcase"
+    },
+    {
+      "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000007",
+      "name" : "Reviews",
+      "symbol" : "magnifyingglass"
+    }
+  ],
+  "lastSeen" : {
+    "cvpr27|abstract|#1" : "2026-11-10 23:59:59",
+    "cvpr27|paper|#1" : "2026-11-16 23:59:59"
+  },
+  "mail" : {
+    "groups" : [
+      {
+        "hidesBufferBlocks" : true,
+        "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000003",
+        "kind" : "supervisors",
+        "language" : "en",
+        "name" : "",
+        "people" : [
+          {
+            "email" : "jane.doe@example.org",
+            "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000001",
+            "name" : "Prof. Jane Doe"
+          }
+        ]
+      },
+      {
+        "hidesBufferBlocks" : false,
+        "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000004",
+        "kind" : "collaborators",
+        "language" : "zh-Hans",
+        "name" : "",
+        "people" : [
+          {
+            "email" : "li.ming@example.org",
+            "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000002",
+            "name" : "李明"
+          }
+        ]
+      },
+      {
+        "hidesBufferBlocks" : false,
+        "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000005",
+        "kind" : "other",
+        "language" : "en",
+        "name" : "Reading group",
+        "people" : [
+
+        ]
+      }
+    ],
+    "senderAddress" : "alex@example.edu",
+    "signature" : "Alex"
+  },
+  "papers" : [
+    {
+      "blocks" : [
+        {
+          "customName" : "",
+          "end" : "2026-10-18",
+          "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000021",
+          "isDone" : true,
+          "kind" : "experiments",
+          "people" : [
+
+          ],
+          "start" : "2026-10-01"
+        },
+        {
+          "customName" : "",
+          "end" : "2026-11-06",
+          "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000022",
+          "isDone" : false,
+          "kind" : "writing",
+          "people" : [
+            "6E8DAB3F-4C50-4D7E-9FA0-000000000001"
+          ],
+          "start" : "2026-10-19"
+        },
+        {
+          "customName" : "Figures",
+          "end" : "2026-10-31",
+          "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000023",
+          "isDone" : false,
+          "kind" : "custom",
+          "people" : [
+
+          ],
+          "start" : "2026-10-26"
+        },
+        {
+          "customName" : "",
+          "end" : "2026-11-16",
+          "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000024",
+          "isDone" : false,
+          "kind" : "buffer",
+          "people" : [
+
+          ],
+          "start" : "2026-11-14"
+        }
+      ],
+      "createdAt" : "2026-09-28T10:00:00Z",
+      "deadlines" : [
+        {
+          "date" : "2026-11-24T11:59:59Z",
+          "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000010",
+          "isDone" : false,
+          "link" : "https://example.org/cvpr",
+          "note" : "Code and videos",
+          "timeZone" : "UTC-12",
+          "title" : "Supplementary material"
+        }
+      ],
+      "doneDeadlines" : [
+        "cvpr27|abstract|#1"
+      ],
+      "githubURL" : "https://github.com/example/video-diffusion",
+      "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000020",
+      "milestones" : [
+        {
+          "day" : "2026-11-01",
+          "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000025",
+          "isDone" : false,
+          "title" : "Draft to Jane"
+        },
+        {
+          "day" : "2026-10-18",
+          "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000026",
+          "isDone" : true,
+          "title" : "Results frozen"
+        }
+      ],
+      "notes" : "Camera-ready checklist in the Overleaf project.",
+      "overleafURL" : "https://www.overleaf.com/project/example",
+      "stage" : "writing",
+      "target" : {
+        "conference" : {
+          "round" : "#1",
+          "series" : "AI/cvpr",
+          "year" : 2027
+        }
+      },
+      "threads" : [
+        {
+          "groupID" : "6E8DAB3F-4C50-4D7E-9FA0-000000000003",
+          "includesOtherWork" : true,
+          "lastSentAt" : "2026-10-19T09:00:00Z",
+          "messageID" : "0A1B2C3D-0001@example.org",
+          "startedAt" : "2026-10-05T09:00:00Z",
+          "subject" : "Progress: Efficient Video Diffusion"
+        }
+      ],
+      "title" : "Efficient Video Diffusion",
+      "todos" : [
+        {
+          "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000027",
+          "isDone" : true,
+          "title" : "Rerun the baselines"
+        },
+        {
+          "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000028",
+          "isDone" : false,
+          "title" : "Ablation table"
+        }
+      ],
+      "trackHeight" : 26,
+      "visibleTo" : [
+        "6E8DAB3F-4C50-4D7E-9FA0-000000000001"
+      ]
+    },
+    {
+      "blocks" : [
+        {
+          "customName" : "Research proposal",
+          "end" : "2026-11-15",
+          "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000032",
+          "isDone" : false,
+          "kind" : "custom",
+          "people" : [
+
+          ],
+          "start" : "2026-10-20"
+        }
+      ],
+      "createdAt" : "2026-10-02T10:00:00Z",
+      "deadlines" : [
+        {
+          "date" : "2026-12-01T22:59:00Z",
+          "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000030",
+          "isDone" : false,
+          "link" : "",
+          "note" : "",
+          "timeZone" : "Europe/Amsterdam",
+          "title" : ""
+        }
+      ],
+      "doneDeadlines" : [
+
+      ],
+      "githubURL" : "",
+      "groupID" : "6E8DAB3F-4C50-4D7E-9FA0-000000000006",
+      "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000031",
+      "mainDeadline" : "6E8DAB3F-4C50-4D7E-9FA0-000000000030",
+      "milestones" : [
+
+      ],
+      "notes" : "",
+      "overleafURL" : "",
+      "stage" : "idea",
+      "threads" : [
+
+      ],
+      "title" : "Doctoral Fellowship",
+      "todos" : [
+
+      ],
+      "visibleTo" : [
+
+      ]
+    }
+  ],
+  "papersPosition" : 1,
+  "recentlyDeleted" : [
+    {
+      "deletedAt" : "2026-10-18T10:00:00Z",
+      "group" : {
+        "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000007",
+        "name" : "Reviews",
+        "symbol" : "magnifyingglass"
+      },
+      "groupPosition" : 1,
+      "index" : 2,
+      "paper" : {
+        "blocks" : [
+
+        ],
+        "createdAt" : "2026-10-10T10:00:00Z",
+        "deadlines" : [
+
+        ],
+        "doneDeadlines" : [
+
+        ],
+        "githubURL" : "",
+        "groupID" : "6E8DAB3F-4C50-4D7E-9FA0-000000000007",
+        "id" : "6E8DAB3F-4C50-4D7E-9FA0-000000000050",
+        "milestones" : [
+
+        ],
+        "notes" : "",
+        "overleafURL" : "",
+        "stage" : "idea",
+        "threads" : [
+
+        ],
+        "title" : "TMLR review",
+        "todos" : [
+
+        ],
+        "visibleTo" : [
+
+        ]
+      },
+      "wasArchived" : false
+    }
+  ],
+  "settings" : {
+    "appearance" : "dark",
+    "axisLabels" : "both",
+    "axisRange" : "sixMonths",
+    "blockReminders" : false,
+    "categories" : [
+      "AI",
+      "DB"
+    ],
+    "ccfRanks" : [
+      "A"
+    ],
+    "coreRanks" : [
+      "A",
+      "A*"
+    ],
+    "dateChangeAlerts" : true,
+    "menuBarStyle" : "days",
+    "menuBarSubject" : {
+      "paper" : {
+        "_0" : "6E8DAB3F-4C50-4D7E-9FA0-000000000020"
+      }
+    },
+    "notificationsEnabled" : true,
+    "reminderDays" : [
+      14,
+      3
+    ],
+    "rowSize" : "small",
+    "thcplRanks" : [
+      "A"
+    ]
+  }
+}

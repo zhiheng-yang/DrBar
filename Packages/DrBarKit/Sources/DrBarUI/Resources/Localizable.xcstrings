@@ -1,0 +1,1093 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@ left" : {
+      "comment" : "Time left until a deadline, e.g. 35 days left",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "还剩 %@"
+          }
+        }
+      }
+    },
+    "%@, %@ %@, %@" : {
+      "comment" : "VoiceOver label of a deadline row",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@, %2$@ %3$@, %4$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@，%2$@ %3$@，%4$@"
+          }
+        }
+      }
+    },
+    "%lld days" : {
+      "comment" : "Length of a time block",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld day"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld days"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld 天"
+          }
+        }
+      }
+    },
+    "%lld days after the deadline" : {
+      "comment" : "Hover card: a milestone past the deadline it leads up to",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld day after the deadline"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld days after the deadline"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DDL 后 %lld 天"
+          }
+        }
+      }
+    },
+    "%lld of %lld" : {
+      "comment" : "Papers accepted of those submitted, e.g. 3,032 of 12,957",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld of %2$lld"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "Abstract" : {
+      "comment" : "Short for the abstract registration",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摘要"
+          }
+        }
+      }
+    },
+    "Abstract registration" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "摘要注册"
+          }
+        }
+      }
+    },
+    "Acceptance %@ (%@)" : {
+      "comment" : "The latest acceptance rate of a conference and its year",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Acceptance %1$@ (%2$@)"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录用率 %1$@（%2$@）"
+          }
+        }
+      }
+    },
+    "Add %@" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加%@"
+          }
+        }
+      }
+    },
+    "Add Deadline" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加 DDL"
+          }
+        }
+      }
+    },
+    "Add Milestone" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "添加里程碑"
+          }
+        }
+      }
+    },
+    "Architecture and systems" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "计算机体系结构/并行与分布计算/存储系统"
+          }
+        }
+      }
+    },
+    "Artificial intelligence" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人工智能"
+          }
+        }
+      }
+    },
+    "Back to Today" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "回到今天"
+          }
+        }
+      }
+    },
+    "Behind: %@ was due %@" : {
+      "comment" : "Hover card: the work that makes a plan behind",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Behind: %1$@ was due %2$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "落后：“%1$@”本应在 %2$@ 完成"
+          }
+        }
+      }
+    },
+    "Behind: a block or milestone is overdue" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "落后：有时间块或里程碑已逾期"
+          }
+        }
+      }
+    },
+    "Buffer" : {
+      "comment" : "Time block kind",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "缓冲"
+          }
+        }
+      }
+    },
+    "CCF %@" : {
+      "comment" : "CCF rank, e.g. CCF A",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CCF %@"
+          }
+        }
+      }
+    },
+    "Collaborators" : {
+      "comment" : "Group of email recipients",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "合作者"
+          }
+        }
+      }
+    },
+    "Conference" : {
+      "comment" : "When and where a conference takes place",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "会议举办"
+          }
+        }
+      }
+    },
+    "Conflict: %@ ends %@, after its deadline" : {
+      "comment" : "Hover card: the block that runs past the deadline it leads up to",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "Conflict: %1$@ ends %2$@, after its deadline"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冲突：“%1$@”到 %2$@ 才结束，晚于它的 DDL"
+          }
+        }
+      }
+    },
+    "Conflict: work runs past its deadline" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "冲突：有工作排到了 DDL 之后"
+          }
+        }
+      }
+    },
+    "Custom" : {
+      "comment" : "Time block kind with a name of the user's choice",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自定义"
+          }
+        }
+      }
+    },
+    "Databases and data mining" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "数据库/数据挖掘/内容检索"
+          }
+        }
+      }
+    },
+    "Date unreadable" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日期无法识别"
+          }
+        }
+      }
+    },
+    "Dates" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "日期"
+          }
+        }
+      }
+    },
+    "Days from Today" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "距今天数"
+          }
+        }
+      }
+    },
+    "Deadline" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DDL"
+          }
+        }
+      }
+    },
+    "Deadline not announced" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DDL 未公布"
+          }
+        }
+      }
+    },
+    "Deadlines" : {
+      "comment" : "Row of a paper's timeline",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "DDL"
+          }
+        }
+      }
+    },
+    "Decided" : {
+      "comment" : "Paper stage",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已出结果"
+          }
+        }
+      }
+    },
+    "Delete “%@”" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "删除“%@”"
+          }
+        }
+      }
+    },
+    "Done" : {
+      "comment" : "Hover card: a block or milestone",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已完成"
+          }
+        }
+      }
+    },
+    "Due %@" : {
+      "comment" : "A deadline without a name",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ 截止"
+          }
+        }
+      }
+    },
+    "Duplicate" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "复制"
+          }
+        }
+      }
+    },
+    "Edit “%@”…" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "编辑“%@”…"
+          }
+        }
+      }
+    },
+    "Ended %@, not done" : {
+      "comment" : "Hover card: e.g. Ended 2 days ago, not done",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@结束，未完成"
+          }
+        }
+      }
+    },
+    "Ends %lld days after the deadline" : {
+      "comment" : "Hover card: a block past the deadline it leads up to",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ends %lld day after the deadline"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Ends %lld days after the deadline"
+                }
+              }
+            }
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "比 DDL 晚 %lld 天结束"
+          }
+        }
+      }
+    },
+    "Experiments" : {
+      "comment" : "Paper stage\nTime block kind",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "实验"
+          }
+        }
+      }
+    },
+    "Graphics and multimedia" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "计算机图形学与多媒体"
+          }
+        }
+      }
+    },
+    "Human–computer interaction" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "人机交互与普适计算"
+          }
+        }
+      }
+    },
+    "Idea" : {
+      "comment" : "Paper stage",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "构思"
+          }
+        }
+      }
+    },
+    "Interdisciplinary" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "交叉/综合/新兴"
+          }
+        }
+      }
+    },
+    "Internal review" : {
+      "comment" : "Time block kind",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "内审修改"
+          }
+        }
+      }
+    },
+    "Label the Axis With" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时间轴标注"
+          }
+        }
+      }
+    },
+    "Last year: %@" : {
+      "comment" : "Hover card: last year's deadline",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "去年：%@"
+          }
+        }
+      }
+    },
+    "Make Main Deadline" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设为主 DDL"
+          }
+        }
+      }
+    },
+    "Mark as Done" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标为已完成"
+          }
+        }
+      }
+    },
+    "Mark as Not Done" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标为未完成"
+          }
+        }
+      }
+    },
+    "Mark as Not Submitted" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标为未投稿"
+          }
+        }
+      }
+    },
+    "Mark as Submitted" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "标为已投稿"
+          }
+        }
+      }
+    },
+    "Mark “%@” as Done" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将“%@”标为已完成"
+          }
+        }
+      }
+    },
+    "Mark “%@” as Not Done" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "将“%@”标为未完成"
+          }
+        }
+      }
+    },
+    "Milestones" : {
+      "comment" : "Row of a paper's timeline",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "里程碑"
+          }
+        }
+      }
+    },
+    "Networks" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "计算机网络"
+          }
+        }
+      }
+    },
+    "No deadline" : {
+      "comment" : "Hover card: work with no deadline yet",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "没有 DDL"
+          }
+        }
+      }
+    },
+    "Not announced" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未公布"
+          }
+        }
+      }
+    },
+    "Not listed" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未列入"
+          }
+        }
+      }
+    },
+    "Not planned" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未规划"
+          }
+        }
+      }
+    },
+    "Not ranked" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未分级"
+          }
+        }
+      }
+    },
+    "Notification" : {
+      "comment" : "Date when acceptance decisions are sent",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "录用通知"
+          }
+        }
+      }
+    },
+    "On track" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "正常"
+          }
+        }
+      }
+    },
+    "Overdue" : {
+      "comment" : "Hover card: a milestone not done by its day",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已逾期"
+          }
+        }
+      }
+    },
+    "Paper" : {
+      "comment" : "Short for the paper submission",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全文"
+          }
+        }
+      }
+    },
+    "Paper submission" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "论文提交"
+          }
+        }
+      }
+    },
+    "Rebuttal" : {
+      "comment" : "Rebuttal period date of a conference",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rebuttal"
+          }
+        }
+      }
+    },
+    "Security" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "网络与信息安全"
+          }
+        }
+      }
+    },
+    "Show Details" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "显示详情"
+          }
+        }
+      }
+    },
+    "Software engineering" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "软件工程/系统软件/程序设计语言"
+          }
+        }
+      }
+    },
+    "Submitted" : {
+      "comment" : "Paper stage",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已投稿"
+          }
+        }
+      }
+    },
+    "Supervisors" : {
+      "comment" : "Group of email recipients",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "导师"
+          }
+        }
+      }
+    },
+    "Symbol and name" : {
+      "comment" : "Menu bar style",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "图标和名称"
+          }
+        }
+      }
+    },
+    "Symbol only" : {
+      "comment" : "Menu bar style",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "只显示图标"
+          }
+        }
+      }
+    },
+    "Symbol, name and days" : {
+      "comment" : "Menu bar style",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "图标、名称和天数"
+          }
+        }
+      }
+    },
+    "Theory" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "计算机科学理论"
+          }
+        }
+      }
+    },
+    "Today" : {
+      "comment" : "Label of the today line",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今天"
+          }
+        }
+      }
+    },
+    "Two deadlines" : {
+      "comment" : "Menu bar style",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "两个 DDL"
+          }
+        }
+      }
+    },
+    "Unrecognized time zone" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "时区未识别"
+          }
+        }
+      }
+    },
+    "Untitled Group" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未命名分组"
+          }
+        }
+      }
+    },
+    "Untitled block" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未命名时间块"
+          }
+        }
+      }
+    },
+    "Untitled group" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未命名分组"
+          }
+        }
+      }
+    },
+    "Untitled item" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未命名事项"
+          }
+        }
+      }
+    },
+    "Untitled milestone" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未命名里程碑"
+          }
+        }
+      }
+    },
+    "Untitled paper" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未命名论文"
+          }
+        }
+      }
+    },
+    "With" : {
+      "comment" : "Menu of the people who work on a block",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "参与者"
+          }
+        }
+      }
+    },
+    "With %@" : {
+      "comment" : "Hover card: who works on a block or a paper",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "参与：%@"
+          }
+        }
+      }
+    },
+    "Writing" : {
+      "comment" : "Paper stage\nTime block kind",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "写作"
+          }
+        }
+      }
+    },
+    "and %lld more" : {
+      "comment" : "Hover card: to-dos not listed",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "还有 %lld 项"
+          }
+        }
+      }
+    },
+    "done" : {
+      "comment" : "Time block state",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已完成"
+          }
+        }
+      }
+    },
+    "local time" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "本地时间"
+          }
+        }
+      }
+    },
+    "next %@ %@, %@" : {
+      "comment" : "VoiceOver: the next deadline of a paper",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "next %1$@ %2$@, %3$@"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "下一个：%1$@ %2$@，%3$@"
+          }
+        }
+      }
+    },
+    "not done" : {
+      "comment" : "Time block state",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未完成"
+          }
+        }
+      }
+    },
+    "now %@" : {
+      "comment" : "VoiceOver: the current time block",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当前 %@"
+          }
+        }
+      }
+    },
+    "passed" : {
+      "comment" : "A deadline in the past",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "已过"
+          }
+        }
+      }
+    },
+    "with %@" : {
+      "comment" : "Who works on a block",
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "与 %@"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
