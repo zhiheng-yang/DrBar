@@ -1,4 +1,4 @@
-# ccfddl snapshot 2026-10-20
+# ccfddl snapshot 2026-11-09
 # Source: https://ccfddl.com/conference/allconf.yml
 # Data by the ccfddl contributors, MIT License: https://github.com/ccfddl/ccf-deadlines
 - title: AAAI
@@ -86,7 +86,7 @@
     timeline:
     - abstract_deadline: '2026-07-21 23:59:59'
       deadline: '2026-07-28 23:59:59'
-      rebuttal_deadline: '2026-10-25 23:59:59'
+      rebuttal_deadline: '2026-10-31 23:59:59'
       decision_deadline: '2026-11-30 23:59:59'
     timezone: UTC-12
     date: February 16-23, 2027
@@ -208,6 +208,8 @@
     timeline:
     - abstract_deadline: '2026-07-03 23:59:59'
       deadline: '2026-07-05 23:59:59'
+      rebuttal_deadline: '2026-09-02 23:59:59'
+      decision_deadline: '2026-09-20 23:59:59'
     timezone: UTC+0
     date: December 16-18, 2026
     place: Osaka, Japan
@@ -383,11 +385,14 @@
     link: https://www.acml-conf.org/2026/
     timeline:
     - deadline: '2026-06-20 23:59:59'
+      decision_deadline: '2026-09-30 23:59:59'
       comment: Journal Track
     - deadline: '2026-07-05 23:59:59'
+      rebuttal_deadline: '2026-09-05 23:59:59'
+      decision_deadline: '2026-09-22 23:59:59'
       comment: Conference Track
     timezone: AoE
-    date: TBD
+    date: December 1-4, 2026
     place: Melbourne, Australia
   conference_key: AI/acml
 - title: AISTATS
@@ -595,6 +600,8 @@
     timeline:
     - abstract_deadline: '2026-05-22 23:59:59'
       deadline: '2026-05-29 23:59:59'
+      rebuttal_deadline: '2026-07-10 23:59:59'
+      decision_deadline: '2026-08-07 23:59:59'
     timezone: AoE
     date: November 23-26, 2026
     place: Lancaster, UK
@@ -756,13 +763,10 @@
     timeline:
     - deadline: '2026-10-12 23:59:59'
       rebuttal_deadline: '2026-11-30 23:59:59'
-      comment: ARR Submission
-    - deadline: '2026-12-23 23:59:59'
       decision_deadline: '2027-02-10 23:59:59'
-      comment: COLING commitment after ARR meta-reviews; reviewed papers only
     timezone: UTC-12
-    date: May 9-14, 2027
-    place: Macau SAR, China
+    date: May 9-14 (in-person) and 6-7 (virtual), 2027
+    place: Macau SAR, China / Online
   conference_key: AI/coling
 - title: COLM
   description: Conference on Language Modeling
@@ -862,7 +866,11 @@
     id: colt27
     link: https://learningtheory.org/colt2027/
     timeline:
-    - deadline: TBD
+    - deadline: '2027-01-29 23:59:59'
+      rebuttal_deadline: '2027-04-02 23:59:59'
+      decision_deadline: '2027-05-03 23:59:59'
+      comment: Expected rebuttal March 29 - April 2; author notification on or before
+        May 3.
     timezone: AoE
     date: June 28 - July 2, 2027
     place: Tokyo, Japan
@@ -986,6 +994,8 @@
     timeline:
     - abstract_deadline: '2026-05-25 23:59:59'
       deadline: '2026-05-28 23:59:59'
+      rebuttal_deadline: '2026-08-11 23:59:59'
+      decision_deadline: '2026-09-04 23:59:59'
     timezone: AoE
     date: November 9-11, 2026
     place: Austin, Texas, USA
@@ -1030,8 +1040,8 @@
     id: cpal27
     link: https://cpal.cc/
     timeline:
-    - abstract_deadline: '2026-11-23 23:59:59'
-      deadline: '2026-12-05 23:59:59'
+    - abstract_deadline: '2026-11-13 23:59:59'
+      deadline: '2026-11-25 23:59:59'
       rebuttal_deadline: '2027-01-17 23:59:59'
       decision_deadline: '2027-02-01 23:59:59'
     timezone: AoE
@@ -1063,10 +1073,10 @@
     link: https://saiconference.com/CVC
     timeline:
     - deadline: '2026-09-01 23:59:59'
-      decision_deadline: '2026-09-22 23:59:59'
+      decision_deadline: '2026-10-01 23:59:59'
       comment: Round 1
-    - deadline: '2026-10-01 23:59:59'
-      decision_deadline: '2026-11-01 23:59:59'
+    - deadline: '2026-11-15 23:59:59'
+      decision_deadline: '2026-12-15 23:59:59'
       comment: Round 2
     timezone: AoE
     date: April 15-16, 2027
@@ -1201,6 +1211,7 @@
     link: https://www.adai.ai/dai/2026/index.html
     timeline:
     - deadline: '2026-08-03 23:59:59'
+      decision_deadline: '2026-09-16 23:59:59'
     timezone: AoE
     date: November 30-December 1, 2026
     place: Hong Kong, China
@@ -1518,8 +1529,8 @@
     id: esann27
     link: https://www.esann.org/
     timeline:
-    - deadline: '2026-11-18 23:59:59'
-      decision_deadline: '2027-01-23 03:59:00'
+    - deadline: '2026-11-19 03:59:59'
+      decision_deadline: '2027-01-23 03:59:59'
     timezone: UTC-8
     date: April 21 - 23, 2027
     place: Bruges, Belgium and Online
@@ -1585,7 +1596,7 @@
     id: eurogp27
     link: https://www.evostar.org/2027/eurogp/
     timeline:
-    - deadline: '2026-11-01 23:59:59'
+    - deadline: '2026-11-16 23:59:59'
       decision_deadline: '2027-01-10 23:59:59'
       comment: Full papers
     timezone: AoE
@@ -1711,7 +1722,7 @@
     id: evoapps27
     link: https://www.evostar.org/2027/evoapps/
     timeline:
-    - deadline: '2026-11-01 23:59:59'
+    - deadline: '2026-11-16 23:59:59'
       decision_deadline: '2027-01-10 23:59:59'
       comment: Full papers
     timezone: AoE
@@ -1779,7 +1790,7 @@
     id: evocop27
     link: https://www.evostar.org/2027/evocop/
     timeline:
-    - deadline: '2026-11-01 23:59:59'
+    - deadline: '2026-11-16 23:59:59'
       decision_deadline: '2027-01-10 23:59:59'
       comment: Full papers
     timezone: AoE
@@ -1848,7 +1859,7 @@
     id: evomusart27
     link: https://www.evostar.org/2027/evomusart/
     timeline:
-    - deadline: '2026-11-01 23:59:59'
+    - deadline: '2026-11-16 23:59:59'
       decision_deadline: '2027-01-10 23:59:59'
       comment: Full papers
     timezone: AoE
@@ -1995,7 +2006,9 @@
     id: gecco27
     link: https://gecco-2027.sigevo.org/HomePage
     timeline:
-    - deadline: TBD
+    - abstract_deadline: '2027-01-18 23:59:59'
+      deadline: '2027-01-25 23:59:59'
+      decision_deadline: '2027-03-19 23:59:59'
     timezone: AoE
     date: July 12-16, 2027
     place: Kraków, Poland
@@ -2241,7 +2254,7 @@
     timeline:
     - deadline: TBD
     timezone: AoE
-    date: October 2-8, 2027
+    date: October 5-7, 2027
     place: Hong Kong, China
   conference_key: AI/iccv
 - title: ICDAR
@@ -2316,10 +2329,14 @@
     id: icdar2027
     link: https://icdar2027.org/
     timeline:
-    - abstract_deadline: '2027-01-31 23:59:59'
-      deadline: '2027-02-20 23:59:59'
+    - deadline: '2026-11-15 23:59:59'
+      decision_deadline: '2027-05-15 23:59:59'
+      comment: Journal track; initial decision Jan 15, revised submission Apr 1
+    - abstract_deadline: '2027-02-26 23:59:59'
+      deadline: '2027-03-05 23:59:59'
       rebuttal_deadline: '2027-04-27 23:59:59'
       decision_deadline: '2027-05-15 23:59:59'
+      comment: Conference track
     timezone: AoE
     date: August 18 - 22, 2027
     place: Kuala Lumpur, Malaysia
@@ -2465,6 +2482,14 @@
     timezone: UTC+0
     date: July 6-11, 2026
     place: Seoul, Korea
+  - year: 2027
+    id: icml27
+    link: https://icml.cc/Conferences/2027
+    timeline:
+    - deadline: TBD
+    timezone: AoE
+    date: August 2-4, 2027
+    place: Riocentro, Rio de Janeiro, Brazil
   conference_key: AI/icml
 - title: ICMLA
   description: International Conference on Machine Learning and Applications
@@ -2520,6 +2545,15 @@
     timezone: PT
     date: October 5-7, 2026
     place: Oakland Center, Rochester, Michigan, USA
+  - year: 2027
+    id: icmla27
+    link: https://www.icmla-conference.org/icmla27/
+    timeline:
+    - deadline: '2027-05-15 23:59:59'
+      comment: Main Conference Papers DDL.
+    timezone: PT
+    date: December 14-16, 2027
+    place: University of Miami, Coral Gables Campus, Miami, Florida, USA
   conference_key: AI/icmla
 - title: ICONIP
   description: International Conference on Neural Information Processing
@@ -2577,6 +2611,7 @@
     link: https://www.iconip2026.org/
     timeline:
     - deadline: '2026-05-31 23:59:59'
+      decision_deadline: '2026-08-14 23:59:59'
     timezone: UTC-12
     date: November 23-27, 2026
     place: Melbourne, Australia
@@ -2700,7 +2735,7 @@
     link: https://2027.ieee-icra.org/
     timeline:
     - deadline: '2026-09-16 23:59:59'
-      decision_deadline: '2027-02-01 03:59:00'
+      decision_deadline: '2027-02-01 03:59:59'
       comment: Extended submission deadline
     timezone: UTC-8
     date: May 24-28, 2027
@@ -2761,6 +2796,7 @@
     link: https://ictai.computer.org/2026/
     timeline:
     - deadline: '2026-07-21 23:59:59'
+      decision_deadline: '2026-09-06 23:59:59'
     timezone: AoE
     date: November 02-04, 2026
     place: Boca Raton FL, USA
@@ -2835,9 +2871,10 @@
     id: ijcai27
     link: https://2027.ijcai.org/
     timeline:
-    - abstract_deadline: '2027-01-04 23:59:00'
-      deadline: '2027-01-11 23:59:00'
-      decision_deadline: '2027-04-21 23:59:00'
+    - abstract_deadline: '2027-01-04 23:59:59'
+      deadline: '2027-01-11 23:59:59'
+      rebuttal_deadline: '2027-04-02 23:59:59'
+      decision_deadline: '2027-04-21 23:59:59'
       comment: 'Separate satellite event: August 15-17, 2027, Hengqin, China'
     timezone: AoE
     date: August 7-13, 2027
@@ -2902,6 +2939,14 @@
     timezone: AoE
     date: September 1-4, 2026
     place: Rome, Italy
+  - year: 2027
+    id: ijcb2027
+    link: https://ijcb2027.ieee-biometrics.org/
+    timeline:
+    - deadline: '2027-04-10 23:59:59'
+    timezone: AoE
+    date: September 13-17, 2027
+    place: Foz do Iguaçu, Brazil
   conference_key: AI/ijcb
 - title: IJCNLP
   description: International Joint Conference on Natural Language Processing
@@ -2961,11 +3006,13 @@
     - deadline: '2026-05-25 23:59:59'
       comment: ARR initial submission
     - deadline: '2026-08-07 23:59:59'
+      decision_deadline: '2026-09-07 23:59:59'
       comment: Reviewed-paper commitment, round 1
     - deadline: '2026-08-25 23:59:59'
+      decision_deadline: '2026-09-07 23:59:59'
       comment: Reviewed-paper commitment, round 2
     timezone: UTC-12
-    date: Nov 6-10, 2026
+    date: Nov 6-8, 2026
     place: Hengqin, Zhuhai, China (Hybrid)
   conference_key: AI/ijcnlp
 - title: IJCNN
@@ -3108,7 +3155,7 @@
       comment: 'Paper submission deadline: March 1, 2027; exact cutoff time and timezone
         not specified on the official IEEE RAS event page'
     timezone: AoE
-    date: September 26 - October 1, 2027
+    date: September 27 - October 1, 2027
     place: Florence, Italy
   conference_key: AI/iros
 - title: KR
@@ -3301,6 +3348,8 @@
     timeline:
     - abstract_deadline: '2026-08-05 23:59:59'
       deadline: '2026-08-07 23:59:59'
+      rebuttal_deadline: '2026-09-01 23:59:59'
+      decision_deadline: '2026-09-13 23:59:59'
     timezone: AoE
     date: November 20-22, 2026
     place: Northeastern University, Boston, USA
@@ -3431,7 +3480,8 @@
     link: https://neurips.cc/Conferences/2026
     timeline:
     - abstract_deadline: '2026-05-05 11:59:00'
-      deadline: '2026-05-07 11:59:00'
+      deadline: '2026-05-07 11:59:59'
+      decision_deadline: '2026-09-25 11:59:59'
     timezone: UTC+0
     date: December 8-10 (Sydney), December 9-11 (Atlanta and Paris), 2026
     place: Sydney, Australia; Atlanta, USA; Paris, France
@@ -3491,6 +3541,9 @@
     link: http://tcci.ccf.org.cn/conference/2026/
     timeline:
     - deadline: '2026-06-20 23:59:59'
+      rebuttal_deadline: '2026-07-15 23:59:59'
+      decision_deadline: '2026-08-04 23:59:59'
+      comment: Notification expected to be unchanged
     timezone: UTC+8
     date: November 4-5, 2026
     place: Macau, China
@@ -3583,6 +3636,7 @@
     link: https://2026.pricai.org/
     timeline:
     - deadline: '2026-06-27 23:59:59'
+      decision_deadline: '2026-08-18 23:59:59'
     timezone: UTC-12
     date: November 18-20, 2026
     place: Guangzhou, China
@@ -3714,6 +3768,7 @@
     timeline:
     - deadline: '2026-12-04 23:59:59'
       rebuttal_deadline: '2027-02-12 23:59:59'
+      decision_deadline: '2027-04-30 23:59:59'
       comment: 'Stage 1: initial 6-page extended abstract submission'
     timezone: AoE
     date: July 6-11, 2027
@@ -3941,7 +3996,7 @@
       decision_deadline: '2026-10-09 23:59:59'
       comment: Second round
     timezone: AoE
-    date: Jan 4 - 8, 2027
+    date: Jan 6 - 8, 2027
     place: Disney Springs, Buena Vista, FL, USA
   conference_key: AI/wacv
 - title: 3DV
@@ -4003,6 +4058,7 @@
     timeline:
     - abstract_deadline: '2026-08-28 23:59:59'
       deadline: '2026-08-28 23:59:59'
+      decision_deadline: '2026-12-02 07:00:00'
       comment: Regular-paper abstract registration and paper submission are both due
         Aug 28.
     timezone: AoE
@@ -4066,6 +4122,14 @@
     timezone: AoE
     date: June 1-3, 2026
     place: Geneva, Switzerland (Hybrid)
+  - year: 2027
+    id: casa2027
+    link: https://www.cgs-network.org/casaxr27/
+    timeline:
+    - deadline: '2027-02-04 23:59:59'
+    timezone: UTC+0
+    date: June 4-6, 2027
+    place: Xi'an, China
   conference_key: CG/casa
 - title: CCCG
   description: Canadian Conference on Computational Geometry
@@ -4204,7 +4268,8 @@
     id: cgi27
     link: https://cgs-network.org/cgi27/
     timeline:
-    - deadline: '2027-04-20 23:59:59'
+    - deadline: '2027-04-21 11:59:59'
+      decision_deadline: '2027-06-01 11:59:59'
       comment: Regular conference papers (LNCS proceedings track)
     timezone: UTC
     date: July 5-9, 2027
@@ -4348,7 +4413,7 @@
     id: cvm27
     link: http://iccvm.org/2027/
     timeline:
-    - abstract_deadline: '2026-10-23 23:59:59'
+    - abstract_deadline: '2026-10-26 23:59:59'
       deadline: '2026-10-26 23:59:59'
       decision_deadline: '2026-12-15 23:59:59'
     timezone: UTC+0
@@ -4491,7 +4556,7 @@
     link: https://eg2027.isti.cnr.it/
     timeline:
     - abstract_deadline: '2026-09-26 11:59:00'
-      deadline: '2026-10-02 11:59:00'
+      deadline: '2026-10-02 12:59:00'
       rebuttal_deadline: '2026-11-30 23:59:59'
       decision_deadline: '2027-02-09 23:59:59'
     timezone: UTC
@@ -4561,6 +4626,14 @@
     timezone: AoE
     date: July 1-3, 2026
     place: Bordeaux, France
+  - year: 2027
+    id: egsr2027
+    link: https://www.egsr2027.usi.ch/
+    timeline:
+    - deadline: TBD
+    timezone: AoE
+    date: July 5-7, 2027
+    place: Università della Svizzera italiana, Lugano, Switzerland
   conference_key: CG/egsr
 - title: EuroVis
   description: Eurographics Conference on Visualization
@@ -4629,8 +4702,10 @@
     id: eurovis2027
     link: https://eurovis27.github.io/web/
     timeline:
-    - deadline: TBD
-      comment: Full papers; submission deadline not yet announced
+    - abstract_deadline: '2026-11-23 23:59:59'
+      deadline: '2026-12-02 23:59:59'
+      decision_deadline: '2027-03-17 23:59:59'
+      comment: Full papers
     timezone: AoE
     date: May 31-June 4, 2027
     place: Stuttgart, Germany
@@ -4770,7 +4845,7 @@
     timeline:
     - abstract_deadline: '2026-12-14 23:59:59'
       deadline: '2026-12-21 23:59:59'
-      decision_deadline: '2027-04-27 11:59:00'
+      decision_deadline: '2027-04-27 11:59:59'
     timezone: UTC
     date: June 21-25, 2027
     place: Singapore
@@ -4975,10 +5050,12 @@
     place: Bangkok, Thailand
   - year: 2027
     id: icme27
-    link: https://ieee-cas.org/event/conference/2027-ieee-international-conference-multimedia-expo-icme
+    link: https://2027.ieeeicme.org/
     timeline:
     - deadline: '2026-12-30 23:59:59'
-    timezone: UTC-12
+      rebuttal_deadline: '2027-03-04 23:59:59'
+      decision_deadline: '2027-03-24 23:59:59'
+    timezone: AoE
     date: July 13-17, 2027
     place: Xiamen, China
   conference_key: CG/icme
@@ -5163,8 +5240,11 @@
     id: interspeech27
     link: https://interspeech2027.org/
     timeline:
-    - deadline: '2027-02-09 23:59:59'
-      decision_deadline: '2027-06-03 11:59:00'
+    - deadline: '2027-02-10 11:59:59'
+      rebuttal_deadline: '2027-04-21 11:59:59'
+      decision_deadline: '2027-06-03 11:59:59'
+      comment: Regular papers; rebuttal April 13-20. Date-only milestones use AoE
+        end-of-day convention, converted to UTC.
     timezone: UTC+0
     date: August 29 - September 2, 2027
     place: São Paulo, Brazil
@@ -5307,7 +5387,7 @@
     id: mm26
     link: https://2026.acmmm.org/
     timeline:
-    - abstract_deadline: '2026-03-25 23:59:59'
+    - abstract_deadline: '2026-03-25 23:59:00'
       deadline: '2026-04-01 23:59:59'
     timezone: AoE
     date: November 11-14, 2026
@@ -5435,7 +5515,7 @@
     link: https://www.mmm2027.net/
     timeline:
     - deadline: '2026-08-30 23:59:59'
-      decision_deadline: '2026-10-16 23:59:59'
+      decision_deadline: '2026-10-19 23:59:59'
       comment: Regular papers; extended deadline
     timezone: AoE
     date: January 5-8, 2027
@@ -5494,6 +5574,7 @@
     timeline:
     - abstract_deadline: '2026-07-05 23:59:59'
       deadline: '2026-07-12 23:59:59'
+      decision_deadline: '2026-09-04 23:59:59'
     timezone: AoE
     date: Nov 5-8, 2026
     place: Hengqin, China
@@ -5577,6 +5658,10 @@
     id: pacificvis27
     link: https://pacificvis2027.github.io/
     timeline:
+    - abstract_deadline: '2026-09-01 23:59:59'
+      deadline: '2026-09-08 23:59:59'
+      decision_deadline: '2026-12-15 23:59:59'
+      comment: Journal track
     - abstract_deadline: '2026-11-02 23:59:59'
       deadline: '2026-11-09 23:59:59'
       decision_deadline: '2027-01-25 23:59:59'
@@ -5926,8 +6011,10 @@
     id: siggraph27
     link: https://s2027.siggraph.org/
     timeline:
-    - abstract_deadline: TBD
-      deadline: TBD
+    - abstract_deadline: '2027-01-21 22:00:00'
+      deadline: '2027-01-28 22:00:00'
+      comment: Submissions form & conflicts / paper deadline (upload deadline Jan
+        29)
     timezone: UTC+0
     date: August 8 - 12, 2027
     place: Anaheim, California
@@ -5997,13 +6084,14 @@
     timeline:
     - abstract_deadline: '2026-05-05 23:59:59'
       deadline: '2026-05-12 23:59:59'
+      rebuttal_deadline: '2026-07-03 23:59:59'
       comment: Registration / full paper
     timezone: UTC-12
     date: December 1-4, 2026
     place: KLCC, Kuala Lumpur, Malaysia
   - year: 2027
     id: siggrapha27
-    link: https://asia.siggraph.org/2027/
+    link: https://asia.siggraph.org/2026/about-the-event/siggraph-asia-2027/
     timeline:
     - abstract_deadline: TBD
       deadline: TBD
@@ -6048,7 +6136,7 @@
     id: slt26
     link: https://attend.ieee.org/slt-2026/
     timeline:
-    - abstract_deadline: '2026-06-24 23:59:59'
+    - abstract_deadline: '2026-06-24 23:59:00'
       deadline: '2026-07-01 23:59:59'
       comment: Abstract registration / full paper
     timezone: AoE
@@ -6126,7 +6214,7 @@
       deadline: '2027-03-08 23:59:59'
       decision_deadline: '2027-05-03 23:59:59'
       comment: Abstract submission is a soft deadline
-    timezone: UTC
+    timezone: AoE
     date: June 21-25, 2027
     place: Singapore
   conference_key: CG/smi
@@ -6320,6 +6408,7 @@
     timeline:
     - abstract_deadline: '2026-03-21 23:59:59'
       deadline: '2026-03-31 23:59:59'
+      decision_deadline: '2026-07-15 23:59:59'
     timezone: AoE
     date: November 10-13, 2026
     place: Boston, Massachusetts, USA
@@ -6525,7 +6614,7 @@
       rebuttal_deadline: '2027-04-08 23:59:59'
       decision_deadline: '2027-04-23 23:59:59'
     timezone: AoE
-    date: July 19-23, 2027
+    date: July 21-23, 2027
     place: KIT, Amsterdam, The Netherlands
   conference_key: CT/cav
 - title: CCC
@@ -6712,6 +6801,15 @@
     timezone: AoE
     date: Sep 1-4, 2026
     place: Liverpool, UK
+  - year: 2027
+    id: concur27
+    link: https://www.cs.vu.nl/~wanf/profactivities.html
+    timeline:
+    - deadline: TBD
+      comment: Part of CONQEST 2027
+    timezone: AoE
+    date: September 6-10, 2027
+    place: Lucca, Italy
   conference_key: CT/concur
 - title: ESA
   description: European Symposium on Algorithms
@@ -6892,6 +6990,7 @@
     link: https://sanjeevkhanna.org/FOCS2026_CFP.html
     timeline:
     - deadline: '2026-04-01 21:00:00'
+      decision_deadline: '2026-07-04 11:59:59'
     timezone: UTC
     date: November 8-11, 2026
     place: New York City, NY, USA
@@ -6961,7 +7060,10 @@
     id: fscd27
     link: https://fscd-cade.science.ru.nl/
     timeline:
-    - deadline: TBD
+    - abstract_deadline: '2027-04-19 23:59:59'
+      deadline: '2027-04-26 23:59:59'
+      rebuttal_deadline: '2027-06-12 23:59:59'
+      decision_deadline: '2027-06-28 23:59:59'
     timezone: AoE
     date: August 23-26, 2027
     place: Nijmegen, Netherlands
@@ -7028,10 +7130,12 @@
     id: hscc27
     link: https://hscc.acm.org/2027/
     timeline:
-    - abstract_deadline: '2026-10-29 23:59:59'
+    - abstract_deadline: '2026-11-05 23:59:59'
       deadline: '2026-11-05 23:59:59'
       rebuttal_deadline: '2027-01-15 23:59:59'
       decision_deadline: '2027-01-28 23:59:59'
+      comment: Regular papers; papers submitted by the deadline may be updated until
+        November 6, 2026 23:59:59 AoE
     timezone: AoE
     date: May 17-20, 2027
     place: Boulder, Colorado, USA
@@ -7197,6 +7301,7 @@
     link: https://www.algo-door.com/isaac2026/index.html
     timeline:
     - deadline: '2026-06-29 23:59:59'
+      decision_deadline: '2026-09-07 23:59:59'
     timezone: AoE
     date: December 7-9, 2026
     place: Hangzhou, China
@@ -7474,8 +7579,10 @@
     link: https://www.setta2026.sg/
     timeline:
     - deadline: '2026-05-24 23:59:59'
+      decision_deadline: '2026-07-14 23:59:59'
       comment: Round 1 (extended)
     - deadline: '2026-08-24 23:59:59'
+      decision_deadline: '2026-10-13 23:59:59'
       comment: Round 2 (extended)
     timezone: AoE
     date: December 2-4, 2026
@@ -7548,7 +7655,9 @@
     id: socg27
     link: https://cgweek27.computational-geometry.org/
     timeline:
-    - deadline: TBD
+    - deadline: '2026-12-02 23:59:59'
+      decision_deadline: '2027-02-05 23:59:59'
+      comment: 'Submission registration: November 25, 2026, 23:59 AoE'
     timezone: AoE
     date: June 21-25, 2027
     place: Bengaluru, India
@@ -7750,6 +7859,7 @@
     link: https://adma2026.github.io/
     timeline:
     - deadline: '2026-07-17 23:59:59'
+      decision_deadline: '2026-09-02 23:59:59'
     timezone: AoE
     date: November 13 - 15, 2026
     place: Hong Kong, China
@@ -7827,7 +7937,106 @@
     timezone: AoE
     date: September 7-9, 2026
     place: Danang, Vietnam / Online
+  - year: 2027
+    id: apweb27
+    link: https://conferences.sigappfr.org/apweb2027/
+    timeline:
+    - deadline: '2027-03-07 23:59:59'
+      decision_deadline: '2027-04-20 23:59:59'
+    - deadline: '2027-05-14 23:59:59'
+      decision_deadline: '2027-06-22 23:59:59'
+    timezone: AoE
+    date: August 29-31, 2027
+    place: Guiyang, China / Online
   conference_key: DB/apweb
+- title: CHIIR
+  description: ACM SIGIR Conference on Human Information Interaction and Retrieval
+  sub: DB
+  rank:
+    ccf: N
+    core: B
+  dblp: chiir
+  confs:
+  - year: 2020
+    id: chiir20
+    link: http://sigir.org/chiir2020/
+    timeline:
+    - deadline: '2019-10-15 23:59:59'
+      decision_deadline: '2019-12-10 23:59:59'
+    timezone: AoE
+    date: August 13-14, 2020
+    place: Virtual (originally Vancouver, Canada)
+  - year: 2021
+    id: chiir21
+    link: https://acm-chiir.github.io/chiir2021/
+    timeline:
+    - abstract_deadline: '2020-10-06 23:59:59'
+      deadline: '2020-10-16 23:59:59'
+      decision_deadline: '2020-12-08 23:59:59'
+    timezone: AoE
+    date: March 14-19, 2021
+    place: Virtual (originally Canberra, Australia)
+  - year: 2022
+    id: chiir22
+    link: https://ai.ur.de/chiir2022/
+    timeline:
+    - abstract_deadline: '2021-10-05 23:59:59'
+      deadline: '2021-10-12 23:59:59'
+      decision_deadline: '2021-12-07 23:59:59'
+    timezone: AoE
+    date: March 14-18, 2022
+    place: Virtual (originally Regensburg, Germany)
+  - year: 2023
+    id: chiir23
+    link: https://sigir.org/chiir2023/
+    timeline:
+    - abstract_deadline: '2022-10-12 23:59:59'
+      deadline: '2022-10-19 23:59:59'
+      decision_deadline: '2022-12-13 23:59:59'
+    timezone: AoE
+    date: March 19-23, 2023
+    place: Austin, Texas, USA
+  - year: 2024
+    id: chiir24
+    link: https://chiir2024.github.io/
+    timeline:
+    - abstract_deadline: '2023-10-10 23:59:59'
+      deadline: '2023-10-20 23:59:59'
+      decision_deadline: '2023-12-12 23:59:59'
+    timezone: AoE
+    date: March 10-14, 2024
+    place: Sheffield, UK
+  - year: 2025
+    id: chiir25
+    link: https://chiir2025.github.io/
+    timeline:
+    - abstract_deadline: '2024-10-17 23:59:59'
+      deadline: '2024-10-24 23:59:59'
+      decision_deadline: '2024-12-17 23:59:59'
+    timezone: AoE
+    date: March 24-28, 2025
+    place: Melbourne, Australia
+  - year: 2026
+    id: chiir26
+    link: https://chiir2026.github.io/
+    timeline:
+    - abstract_deadline: '2025-10-08 23:59:59'
+      deadline: '2025-10-15 23:59:59'
+      decision_deadline: '2025-12-10 23:59:59'
+    timezone: AoE
+    date: March 22-26, 2026
+    place: Seattle, Washington, USA
+  - year: 2027
+    id: chiir27
+    link: https://chiir2027.github.io/
+    timeline:
+    - abstract_deadline: '2026-10-08 23:59:59'
+      deadline: '2026-10-15 23:59:59'
+      decision_deadline: '2026-12-15 23:59:59'
+    timezone: AoE
+    date: March 7-11, 2027
+    place: Berlin, Germany
+  conference_key: DB/chiir
 - title: CIDR
   description: International Conference on Innovative Data Systems Research
   sub: DB
@@ -7963,10 +8172,89 @@
     timeline:
     - abstract_deadline: '2026-05-16 23:59:59'
       deadline: '2026-05-23 23:59:59'
+      decision_deadline: '2026-08-07 23:59:59'
     timezone: AoE
     date: November 9-11, 2026
     place: Rome, Italy
   conference_key: DB/cikm
+- title: CLEF
+  description: Conference and Labs of the Evaluation Forum
+  sub: DB
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: clef
+  confs:
+  - year: 2020
+    id: clef20
+    link: http://clef2020.clef-initiative.eu/
+    timeline:
+    - deadline: '2020-05-15 23:59:59'
+    timezone: AoE
+    date: September 22-25, 2020
+    place: Online
+  - year: 2021
+    id: clef21
+    link: http://clef2021.clef-initiative.eu/
+    timeline:
+    - deadline: '2021-05-10 23:59:59'
+      comment: Extended from May 3
+    timezone: AoE
+    date: September 21-24, 2021
+    place: Online
+  - year: 2022
+    id: clef22
+    link: http://clef2022.clef-initiative.eu/
+    timeline:
+    - deadline: '2022-05-02 23:59:59'
+    timezone: AoE
+    date: September 5-8, 2022
+    place: Bologna, Italy
+  - year: 2023
+    id: clef23
+    link: http://clef2023.clef-initiative.eu/
+    timeline:
+    - deadline: '2023-05-21 23:59:59'
+      comment: Extended from May 12
+    timezone: AoE
+    date: September 18-21, 2023
+    place: Thessaloniki, Greece
+  - year: 2024
+    id: clef24
+    link: https://clef2024.clef-initiative.eu/
+    timeline:
+    - deadline: '2024-05-17 23:59:59'
+    timezone: AoE
+    date: September 9-12, 2024
+    place: Grenoble, France
+  - year: 2025
+    id: clef25
+    link: https://clef2025.clef-initiative.eu/
+    timeline:
+    - abstract_deadline: '2025-05-11 23:59:59'
+      deadline: '2025-05-20 23:59:59'
+      comment: Extended from May 6 (abstract) and May 13 (full paper)
+    timezone: AoE
+    date: September 9-12, 2025
+    place: Madrid, Spain
+  - year: 2026
+    id: clef26
+    link: https://clef2026.clef-initiative.eu/
+    timeline:
+    - deadline: '2026-05-25 23:59:59'
+    timezone: AoE
+    date: September 21-24, 2026
+    place: Jena, Germany
+  - year: 2027
+    id: clef27
+    link: https://clef2027.clef-initiative.eu/
+    timeline:
+    - deadline: TBD
+    timezone: AoE
+    date: September 14-17, 2027
+    place: Bucharest, Romania
+  conference_key: DB/clef
 - title: DASFAA
   description: Database Systems for Advanced Applications
   sub: DB
@@ -8033,8 +8321,8 @@
     id: dasfaa27
     link: https://dasfaa2027.github.io/
     timeline:
-    - deadline: '2026-11-25 23:59:00'
-      decision_deadline: '2027-01-25 23:59:00'
+    - deadline: '2026-11-25 23:59:59'
+      decision_deadline: '2027-01-25 23:59:59'
       comment: Research papers
     timezone: AoE
     date: May 27-30, 2027
@@ -8126,9 +8414,9 @@
     timeline:
     - abstract_deadline: '2026-09-22 11:59:59'
       deadline: '2026-10-06 11:59:59'
-      decision_deadline: '2026-12-08 11:59:00'
+      decision_deadline: '2026-12-08 11:59:59'
     timezone: UTC+0
-    date: March 21-25, 2027
+    date: March 22-24, 2027
     place: Southampton, UK
   conference_key: DB/ecir
 - title: EDBT
@@ -8351,10 +8639,12 @@
     timeline:
     - deadline: '2026-06-11 17:00:00'
       rebuttal_deadline: '2026-08-15 17:00:00'
-      comment: first round
+      decision_deadline: '2026-09-10 17:00:00'
+      comment: first round; notification date is approximate
     - deadline: '2026-11-11 17:00:00'
       rebuttal_deadline: '2027-01-15 17:00:00'
-      comment: second round
+      decision_deadline: '2027-02-10 17:00:00'
+      comment: second round; notification date is approximate
     timezone: PT
     date: May 17-21, 2027
     place: Copenhagen, Denmark
@@ -8413,15 +8703,16 @@
     link: http://icdm2026.neu.edu.cn/
     timeline:
     - deadline: '2026-06-06 23:59:59'
+      decision_deadline: '2026-08-16 23:59:59'
     timezone: AoE
-    date: November 12-15, 2026
+    date: November 13-15, 2026
     place: Shenyang, China
   - year: 2027
     id: icdm2027
     link: https://icdm2027-website.onrender.com/
     timeline:
-    - deadline: '2027-06-06 23:59:00'
-      decision_deadline: '2027-08-16 23:59:00'
+    - deadline: '2027-06-06 23:59:59'
+      decision_deadline: '2027-08-16 23:59:59'
       comment: Full papers; dates are tentative and subject to change
     timezone: AoE
     date: November 15-18, 2027
@@ -8525,6 +8816,77 @@
     date: April 6-9, 2027
     place: Lille, France
   conference_key: DB/icdt
+- title: ICTIR
+  description: International ACM SIGIR Conference on Innovative Concepts and Theories
+    in Information Retrieval
+  sub: DB
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: ictir
+  confs:
+  - year: 2020
+    id: ictir20
+    link: https://ictir2020.org/
+    timeline:
+    - deadline: '2020-05-25 23:59:59'
+      comment: Full and short papers; extended from May 11 (full) and May 18 (short)
+    timezone: AoE
+    date: September 14-17, 2020
+    place: Online
+  - year: 2021
+    id: ictir21
+    link: https://web.archive.org/web/20210625085820/https://ictir2021.org/
+    timeline:
+    - deadline: '2021-05-03 23:59:59'
+      comment: Extended from April 26
+    timezone: AoE
+    date: July 11, 2021
+    place: Online
+  - year: 2022
+    id: ictir22
+    link: https://web.archive.org/web/20220703013506/https://www.ictir2022.org/
+    timeline:
+    - deadline: '2022-05-06 23:59:59'
+      comment: Extended from April 29
+    timezone: AoE
+    date: July 11-12, 2022
+    place: Madrid, Spain
+  - year: 2023
+    id: ictir23
+    link: https://sigir.org/ictir2023/
+    timeline:
+    - deadline: '2023-05-05 23:59:59'
+      comment: Extended from April 28
+    timezone: AoE
+    date: July 23, 2023
+    place: Taipei, Taiwan
+  - year: 2024
+    id: ictir24
+    link: https://www.ictir2024.org/
+    timeline:
+    - deadline: '2024-04-25 23:59:59'
+    timezone: AoE
+    date: July 13, 2024
+    place: Washington, DC, USA
+  - year: 2025
+    id: ictir25
+    link: https://ictir2025.cs.umass.edu/
+    timeline:
+    - deadline: '2025-04-24 23:59:59'
+    timezone: AoE
+    date: July 18, 2025
+    place: Padua, Italy
+  - year: 2026
+    id: ictir26
+    link: https://sigir-ictir.github.io/ictir2026/
+    timeline:
+    - deadline: '2026-04-16 23:59:59'
+    timezone: AoE
+    date: July 25, 2026
+    place: Melbourne, Australia
+  conference_key: DB/ictir
 - title: ISWC
   description: International Semantic Web Conference
   sub: DB
@@ -8585,10 +8947,20 @@
     timeline:
     - abstract_deadline: '2026-05-02 23:59:59'
       deadline: '2026-05-07 23:59:59'
+      rebuttal_deadline: '2026-06-18 23:59:59'
+      decision_deadline: '2026-07-16 23:59:59'
       comment: ESWC resubmissions must be committed by April 11, 2026
     timezone: AoE
     date: October 27-29, 2026
     place: Bari, Italy
+  - year: 2027
+    id: iswc27
+    link: https://iswc2027.semanticweb.org/
+    timeline:
+    - deadline: TBD
+    timezone: AoE
+    date: October 24-28, 2027
+    place: Montevideo, Uruguay
   conference_key: DB/iswc
 - title: MDM
   description: IEEE International Conference on Mobile Data Management
@@ -8609,6 +8981,15 @@
     timezone: AoE
     date: June 30 - July 2, 2026
     place: Athens, Greece
+  - year: 2027
+    id: mdm27
+    link: https://mdm2027.github.io/index.html
+    timeline:
+    - deadline: '2027-01-25 23:59:59'
+      decision_deadline: '2027-03-25 23:59:59'
+    timezone: AoE
+    date: June 28 - July 1, 2027
+    place: Hamilton, New Zealand
   conference_key: DB/mdm
 - title: PAKDD
   description: Pacific-Asia Conference on Knowledge Discovery and Data Mining
@@ -9027,6 +9408,59 @@
     date: November 19-20, 2026
     place: Salt Lake City, Utah, USA
   conference_key: DB/sdm
+- title: SIGIR-AP
+  description: International ACM SIGIR Conference on Information Retrieval in the
+    Asia Pacific
+  sub: DB
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: sigir-ap
+  confs:
+  - year: 2023
+    id: sigir-ap23
+    link: https://www.sigir-ap.org/sigir-ap-2023/
+    timeline:
+    - abstract_deadline: '2023-06-26 23:59:59'
+      deadline: '2023-07-03 23:59:59'
+      decision_deadline: '2023-09-10 23:59:59'
+    timezone: AoE
+    date: November 26-29, 2023
+    place: Beijing, China
+  - year: 2024
+    id: sigir-ap24
+    link: https://www.sigir-ap.org/sigir-ap-2024/
+    timeline:
+    - abstract_deadline: '2024-07-01 23:59:59'
+      deadline: '2024-07-10 23:59:59'
+      decision_deadline: '2024-09-23 23:59:59'
+    timezone: AoE
+    date: December 9-12, 2024
+    place: Tokyo, Japan
+  - year: 2025
+    id: sigir-ap25
+    link: https://www.sigir-ap.org/sigir-ap-2025/
+    timeline:
+    - abstract_deadline: '2025-07-15 23:59:59'
+      deadline: '2025-07-22 23:59:59'
+      decision_deadline: '2025-09-12 23:59:59'
+      comment: Extended deadlines
+    timezone: AoE
+    date: December 7-10, 2025
+    place: Xi'an, China
+  - year: 2026
+    id: sigir-ap26
+    link: https://www.sigir-ap.org/sigir-ap-2026/
+    timeline:
+    - abstract_deadline: '2026-07-22 23:59:59'
+      deadline: '2026-07-29 23:59:59'
+      decision_deadline: '2026-09-23 23:59:59'
+      comment: Extended deadlines
+    timezone: AoE
+    date: December 13-15, 2026
+    place: Singapore
+  conference_key: DB/sigir-ap
 - title: SIGIR
   description: International Conference on Research on Development in Information
     Retrieval
@@ -9659,6 +10093,9 @@
       deadline: '2026-08-24 23:59:59'
       decision_deadline: '2026-11-02 23:59:59'
       comment: Full Paper
+    - deadline: '2026-11-17 23:59:59'
+      decision_deadline: '2026-12-18 23:59:59'
+      comment: Short Paper
     timezone: UTC-12
     date: February 15 - 19, 2027
     place: Cordis, Hong Kong SAR, China
@@ -10557,7 +10994,7 @@
     timeline:
     - abstract_deadline: '2026-11-11 17:00:00'
       deadline: '2026-11-18 17:00:00'
-      decision_deadline: '2027-03-09 03:59:00'
+      decision_deadline: '2027-03-09 03:59:59'
     timezone: UTC-8
     date: July 11-14, 2027
     place: San Jose, CA
@@ -10627,11 +11064,11 @@
     place: Verona, Italy
   - year: 2027
     id: date2027
-    link: https://www.date-conference.com/date-2027-call-papers
+    link: https://www.date-conference.com/call-for-papers
     timeline:
-    - abstract_deadline: '2026-09-13 23:59:59'
-      deadline: '2026-09-20 23:59:59'
-      decision_deadline: '2026-11-23 23:59:59'
+    - abstract_deadline: '2026-09-13 23:59:00'
+      deadline: '2026-09-20 23:59:00'
+      decision_deadline: '2026-11-23 23:59:00'
     timezone: AoE
     date: March 22-24, 2027
     place: Dresden, Germany
@@ -10934,13 +11371,23 @@
     timeline:
     - deadline: '2026-03-17 23:59:59'
       rebuttal_deadline: '2026-05-20 23:59:59'
+      decision_deadline: '2026-06-04 23:59:59'
       comment: Spring deadline
     - deadline: '2026-09-15 23:59:59'
       rebuttal_deadline: '2026-11-19 23:59:59'
+      decision_deadline: '2026-12-08 23:59:59'
       comment: Fall deadline
     timezone: AoE
     date: FEBRUARY 23-25, 2027
     place: Renton, WA, USA
+  - year: 2028
+    id: fast28
+    link: https://www.usenix.org/conference/fast28
+    timeline:
+    - deadline: TBD
+    timezone: AoE
+    date: February 28-March 1, 2028
+    place: Seattle, WA, USA
   conference_key: DS/fast
 - title: FCCM
   description: IEEE Symposium on Field-Programmable Custom Computing Machines
@@ -10962,7 +11409,7 @@
     place: Virtual
   - year: 2022
     id: fccm22
-    link: https://www.fccm.org/
+    link: https://www.fccm.org/past/2022/
     timeline:
     - abstract_deadline: '2022-01-10 23:59:59'
       deadline: '2022-01-17 23:59:59'
@@ -10982,7 +11429,7 @@
     place: Marina del Rey, California, USA
   - year: 2024
     id: fccm24
-    link: https://www.fccm.org/
+    link: https://www.fccm.org/past/2024/
     timeline:
     - abstract_deadline: '2024-01-09 23:59:59'
       deadline: '2024-01-15 23:59:59'
@@ -10991,7 +11438,7 @@
     place: Orlando, USA
   - year: 2025
     id: fccm25
-    link: https://www.fccm.org/
+    link: https://www.fccm.org/past/2025/
     timeline:
     - abstract_deadline: '2025-01-10 23:59:59'
       deadline: '2025-01-19 19:59:00'
@@ -11007,6 +11454,17 @@
     timezone: AoE
     date: May 14-15, 2026
     place: Atlanta, Georgia, USA
+  - year: 2027
+    id: fccm27
+    link: https://www.fccm.org/
+    timeline:
+    - abstract_deadline: '2027-01-10 23:59:59'
+      deadline: '2027-01-17 23:59:59'
+      rebuttal_deadline: '2027-02-27 23:59:59'
+      decision_deadline: '2027-03-14 23:59:59'
+    timezone: UTC-12
+    date: May 10-11, 2027
+    place: Provo, Utah, USA
   conference_key: DS/fccm
 - title: FPGA
   description: ACM/SIGDA International Symposium on Field-Programmable Gate Arrays
@@ -11077,8 +11535,8 @@
     timeline:
     - abstract_deadline: '2026-10-01 23:59:59'
       deadline: '2026-10-08 23:59:59'
-      rebuttal_deadline: '2026-11-15 23:59:59'
-      decision_deadline: '2026-11-24 23:59:59'
+      rebuttal_deadline: '2026-11-25 23:59:59'
+      decision_deadline: '2026-12-08 23:59:59'
     timezone: UTC-12
     date: March 14 - March 16, 2027
     place: Monterey, California, USA
@@ -12217,6 +12675,11 @@
       rebuttal_deadline: '2027-03-08 23:59:59'
       decision_deadline: '2027-03-26 23:59:59'
       comment: 'Main Track; rebuttal/revision period: February 16-March 8, 2027'
+    - abstract_deadline: '2026-12-06 23:59:59'
+      deadline: '2026-12-13 23:59:59'
+      rebuttal_deadline: '2027-02-26 23:59:59'
+      decision_deadline: '2027-03-26 23:59:59'
+      comment: 'Industry Track; rebuttal period: February 15-26, 2027'
     timezone: AoE
     date: June 5-9, 2027
     place: Atlanta, Georgia, USA
@@ -12285,7 +12748,7 @@
     id: iscas27
     link: https://2027.ieee-iscas.org/
     timeline:
-    - deadline: '2026-10-22 23:59:59'
+    - deadline: '2026-10-26 23:59:59'
     timezone: UTC-5
     date: June 6-9, 2027
     place: Bordeaux, France
@@ -13146,7 +13609,8 @@
     timeline:
     - deadline: '2026-11-05 23:59:59'
       rebuttal_deadline: '2027-01-15 23:59:59'
-      comment: Submission Deadline (Firm)
+      decision_deadline: '2027-01-28 23:59:59'
+      comment: Submission Deadline (Firm); Author notification date is tentative.
     timezone: AoE
     date: May 17-20, 2027
     place: Boulder, Colorado
@@ -13552,6 +14016,7 @@
     - abstract_deadline: '2027-01-22 23:59:59'
       deadline: '2027-01-29 23:59:59'
       rebuttal_deadline: '2027-03-24 23:59:59'
+      decision_deadline: '2027-04-10 23:59:59'
       comment: Cycle 2
     timezone: AoE
     date: June 5 - June 11, 2027
@@ -13920,6 +14385,16 @@
     timezone: UTC-4
     date: October 10-14, 2026
     place: Salt Lake City, Utah, USA
+  - year: 2027
+    id: cscw27
+    link: https://cscw.acm.org/2027/
+    timeline:
+    - deadline: TBD
+      comment: There is no secret deadline! If your paper is accepted before the program
+        is set, you'll be invited to present at CSCW 2027.
+    timezone: AoE
+    date: October 16-20, 2027
+    place: Philadelphia, USA
   conference_key: HI/cscw
 - title: CSCWD
   description: International Conference on Computer Supported Cooperative Work in
@@ -13987,7 +14462,8 @@
     id: cscwd27
     link: http://2027.cscwd.org
     timeline:
-    - deadline: '2026-10-31 23:59:59'
+    - deadline: '2026-11-30 23:59:59'
+      comment: Paper submission due (extended)
       decision_deadline: '2027-01-31 23:59:59'
     timezone: AoE
     date: May 26-28, 2027
@@ -15562,6 +16038,14 @@
     timezone: AoE
     date: July 23-25, 2026
     place: Rio de Janeiro, Brazil (Hybrid)
+  - year: 2027
+    id: cogsci27
+    link: https://cognitivesciencesociety.org/cogsci-2027/
+    timeline:
+    - deadline: TBD
+    timezone: AoE
+    date: July 28-31, 2027
+    place: Euskalduna Bilbao Convention Centre, Bilbao, Spain
   conference_key: MX/cogsci
 - title: EMSOFT
   description: International Conference on Embedded Software
@@ -15991,7 +16475,7 @@
     id: mlsys27
     link: https://mlsys.org/
     timeline:
-    - deadline: '2026-10-30 20:00:00'
+    - deadline: '2026-10-30 21:00:00'
       rebuttal_deadline: '2027-01-21 20:00:00'
       decision_deadline: '2027-02-28 21:00:00'
     timezone: UTC
@@ -16169,8 +16653,8 @@
     id: computing27
     link: https://saiconference.com/Computing
     timeline:
-    - deadline: '2026-10-01 23:59:59'
-      decision_deadline: '2026-11-01 23:59:59'
+    - deadline: '2026-11-01 23:59:59'
+      decision_deadline: '2026-11-15 23:59:59'
       comment: Round 1
     - deadline: '2026-12-01 23:59:59'
       decision_deadline: '2027-01-15 23:59:59'
@@ -17521,6 +18005,7 @@
     timeline:
     - abstract_deadline: '2026-09-17 23:59:59'
       deadline: '2026-09-17 23:59:59'
+      decision_deadline: '2026-10-24 23:59:59'
       comment: Research Track - First Round (extended)
     - abstract_deadline: '2026-11-12 23:59:59'
       deadline: '2026-11-19 23:59:59'
@@ -17624,6 +18109,7 @@
     - abstract_deadline: '2026-08-26 23:59:59'
       deadline: '2026-09-02 23:59:59'
       rebuttal_deadline: '2026-11-06 23:59:59'
+      decision_deadline: '2026-11-19 23:59:59'
       comment: Summer Deadlines
     timezone: AoE
     date: Oct 18-22, 2027
@@ -18108,6 +18594,14 @@
     timezone: UTC-4
     date: May 11-13, 2027
     place: Providence, RI, USA
+  - year: 2028
+    id: nsdi28
+    link: https://www.usenix.org/conferences/byname/178
+    timeline:
+    - deadline: TBD
+    timezone: UTC-7
+    date: May 9-11, 2028
+    place: Santa Clara, CA, USA
   conference_key: NW/nsdi
 - title: SECON
   description: IEEE International Conference on Sensing, Communication, and Networking
@@ -18325,8 +18819,7 @@
     id: sigcomm27
     link: https://conferences.sigcomm.org/sigcomm/2027/
     timeline:
-    - abstract_deadline: TBD
-      deadline: TBD
+    - deadline: '2027-02-02 23:59:59'
     timezone: AoE
     date: August 8 - 12, 2027
     place: Bangkok, Thailand
@@ -18894,9 +19387,11 @@
     timeline:
     - deadline: '2026-08-21 23:59:59'
       rebuttal_deadline: '2026-10-30 23:59:59'
+      decision_deadline: '2026-11-13 23:59:59'
       comment: 1st round Deadline
     - deadline: '2026-12-11 23:59:59'
       rebuttal_deadline: '2027-03-12 23:59:59'
+      decision_deadline: '2027-03-31 23:59:59'
       comment: 2nd round Deadline
     timezone: AoE
     date: July 12-16, 2027
@@ -20549,8 +21044,8 @@
     id: ifip119'27
     link: https://www.ifip119.org/Conferences/
     timeline:
-    - deadline: '2026-10-10 23:59:59'
-      decision_deadline: '2026-11-10 23:59:59'
+    - deadline: '2026-10-25 23:59:59'
+      decision_deadline: '2026-11-15 23:59:59'
       comment: Submission Deadline
     timezone: AoE
     date: January 7 - 8, 2027
@@ -20882,12 +21377,14 @@
     link: https://www.ndss-symposium.org/ndss2027/
     timeline:
     - deadline: '2026-05-06 23:59:59'
+      rebuttal_deadline: '2026-07-17 23:59:59'
       decision_deadline: '2026-09-16 23:59:59'
-      comment: Summer
+      comment: Summer; author rebuttal date tentative; decision is final major-revision
+        notification
     - deadline: '2026-08-19 23:59:59'
-      rebuttal_deadline: '2026-11-13 23:59:59'
-      decision_deadline: '2027-01-11 23:59:59'
-      comment: Fall
+      rebuttal_deadline: '2026-11-21 23:59:59'
+      decision_deadline: '2027-01-25 23:59:59'
+      comment: Fall; decision is final major-revision notification
     timezone: UTC-12
     date: March 22 - March 26, 2027
     place: Seoul, Republic of Korea
@@ -20947,6 +21444,7 @@
     link: https://noms2027.ieee-noms.org/
     timeline:
     - deadline: '2026-11-09 23:59:59'
+      decision_deadline: '2027-02-15 23:59:59'
     timezone: AoE
     date: May 10-14, 2027
     place: Montreal, Canada
@@ -21460,14 +21958,35 @@
     id: sacmat27
     link: https://www.sacmat.org/2027/
     timeline:
-    - deadline: '2026-10-30 23:59:59'
+    - deadline: '2026-11-04 23:59:59'
+      decision_deadline: '2026-12-21 23:59:59'
       comment: First Cycle
     - deadline: '2027-02-12 23:59:59'
+      decision_deadline: '2027-03-29 23:59:59'
       comment: Second Cycle
     timezone: AoE
     date: July 19-21, 2027
     place: Durham, England, United Kingdom
   conference_key: SC/sacmat
+- title: SAIS
+  description: USENIX Conference on Secure Agentic-AI Systems
+  sub: SC
+  rank:
+    ccf: N
+    core: N
+    thcpl: N
+  dblp: ''
+  confs:
+  - year: 2027
+    id: sais27
+    link: https://www.usenix.org/conference/sais27
+    timeline:
+    - deadline: '2027-02-04 23:59:59'
+      comment: Paper submission deadline
+    timezone: AoE
+    date: June 7-8, 2027
+    place: Santa Clara, CA, USA
+  conference_key: SC/sais
 - title: SATML
   description: IEEE Conference on Secure and Trustworthy Machine Learning
   sub: SC
@@ -21587,10 +22106,12 @@
     id: sec27
     link: https://ifipsec.org/
     timeline:
-    - deadline: TBD
+    - deadline: '2026-12-15 23:59:59'
+      decision_deadline: '2027-02-18 23:59:59'
+      comment: Full papers
     timezone: AoE
-    date: TBD
-    place: Linköping, Sweden
+    date: June 14-16, 2027
+    place: Linköping University, Linköping, Sweden
   conference_key: SC/sec
 - title: SecureComm
   description: International Conference on Security and Privacy in Communication Networks
@@ -22118,10 +22639,12 @@
     - abstract_deadline: '2026-08-18 23:59:59'
       deadline: '2026-08-25 23:59:59'
       rebuttal_deadline: '2026-11-12 23:59:59'
+      decision_deadline: '2026-12-03 23:59:59'
       comment: Cycle 1 Deadline
     - abstract_deadline: '2027-01-19 23:59:59'
       deadline: '2027-01-26 23:59:59'
       rebuttal_deadline: '2027-04-15 23:59:59'
+      decision_deadline: '2027-05-06 23:59:59'
       comment: Cycle 2 Deadline
     timezone: UTC-12
     date: August 11-13, 2027
@@ -22809,9 +23332,11 @@
     timeline:
     - deadline: '2026-11-19 23:59:59'
       rebuttal_deadline: '2027-01-15 23:59:59'
+      decision_deadline: '2027-01-28 23:59:59'
       comment: Submission R1
     - deadline: '2027-02-11 23:59:59'
       rebuttal_deadline: '2027-03-26 23:59:59'
+      decision_deadline: '2027-04-08 23:59:59'
       comment: Submission R2
     timezone: AoE
     date: June 28 - July 2, 2027
